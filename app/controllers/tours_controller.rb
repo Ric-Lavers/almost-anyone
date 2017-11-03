@@ -50,6 +50,14 @@ class ToursController < ApplicationController
   # PATCH/PUT /tours/1
   # PATCH/PUT /tours/1.json
   def update
+
+    @tour.genres = [] unless params[:tour][:genres].count == 1
+
+    temp_genres = params[:tour][:genres]
+    temp_genres.each{|genre_id|
+      @tour.genres << Genre.find(genre_id) unless genre_id.blank?
+    }
+
     respond_to do |format|
       if @tour.update(tour_params)
         format.html { redirect_to @tour, notice: 'Tour was successfully updated.' }

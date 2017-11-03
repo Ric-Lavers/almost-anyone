@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>email</th>
       <th>User</th>
       <th>Title</th>
       <th>Description</th>
@@ -22,11 +23,12 @@
   <tbody>
     <% @tours.each do |tour| %>
       <tr>
-        <td><%= tour.user %></td>
+        <td><%= tour.user.email %></td>
+        <td><%= tour.user.profile.brand %></td>
         <td><%= tour.title %></td>
         <td><%= tour.description %></td>
         <td><%= tour.country %></td>
-        <td><%= tour.image_data %></td>
+        <td> <img src="<%= tour.image_url %>" alt="" height="10"> </td>
         <td><%= tour.bio %></td>
         <td><%= tour.start_date %></td>
         <td><%= tour.end_date %></td>

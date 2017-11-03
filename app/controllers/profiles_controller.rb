@@ -26,18 +26,12 @@ class ProfilesController < ApplicationController
   def create
     temp_genres = params[:profile][:genres]
     params[:profile].delete("genres")
-    
+
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     temp_genres.each{|genre_id|
       @profile.genres << Genre.find(genre_id) unless genre_id.blank?
     }
-
-
-    # @genres_list.each do |genre|
-    #   Genre.create!(name: genre, profile_id: current_user.profile.id)
-    # end
-
 
     respond_to do |format|
       if @profile.save
@@ -53,6 +47,16 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+
+    @profile.genres = [] unless params[:profile][:genres].count == 1
+
+    temp_genres = params[:profile][:genres]
+    params[:profile].delete("genres")
+
+    temp_genres.each{|genre_id|
+      @profile.genres << Genre.find(genre_id) unless genre_id.blank?
+    }
+
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }

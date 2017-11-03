@@ -42,32 +42,48 @@ rails new almost-anyone --skip test -d postgresql
   * **link ASW**
   * create profile scaffold
 
-  ```
-  rails g scaffold Profile user:reference brand:string  location:string phone_number:string image_data:text bio:text
-  ```
+```
+rails g scaffold Profile user:reference brand:string  location:string phone_number:string image_data:text bio:text
+```
 1. **install rspec** - using Github guide
 1. add first_name & last_name to User model with devise registration [github guide](https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address)
 1. create Tour scaffold
-    ```
-    rails g scaffold Tour user:reference title:string  description:text country:string image_data:text bio:text start_date:timestamp end_date:timestamp min_cost:integer max_cost:integer
 
-    rails db:migrate
-    ```
+```
+rails g scaffold Tour user:reference title:string  description:text country:string image_data:text bio:text start_date:timestamp end_date:timestamp min_cost:integer max_cost:integer
+
+rails db:migrate
+
+```
 1. create genre table.
 
 ```
-    rails g model Genre name
-    rails db:migrate
+rails g model Genre name
+rails db:migrate
 
-    rails g migration CreateJoinTableProfileGenre profile genre
-    rails g migration CreateJoinTableTourGenre tour genre
-      ```
+rails g migration CreateJoinTableProfileGenre profile genre
+rails g migration CreateJoinTableTourGenre tour genre
+```
+then add below to the form
+
+```
+<div class="field">
+  <%= form.label :genres %>
+  <%= form.collection_select(:genres, Genre.order(:name),:id,:name,{}, {multiple: true, include_blank: false}) %>
+</div>
+```
+Now the form will look to the Genres to find the selection and send the :id and :name to the controller in the *weak* params. After the new Tour or Profile is made add the below code to link the genres via the join table.
+
+```
+temp_genres = params[:tour][:genres]
+temp_genres.each{|genre_id|
+  @tour.genres << Genre.find(genre_id) unless genre_id.blank?
+}
+```
 
 
 
 
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -120,51 +136,3 @@ Give an example
 Add additional notes about how to deploy this on a live system
 ## CHECK OUT THIS FOR MORE TIPS
 * [Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists) -This is intended as a quick reference and showcase.
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
