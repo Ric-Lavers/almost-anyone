@@ -9,7 +9,13 @@ end
 gem 'devise'
 gem 'shrine'
 gem "aws-sdk-s3", "~> 1.2"
-# gem 'rspec'
+group :development, :test do
+  gem 'rspec-rails', '~> 3.6'
+end
+group :development do
+  gem 'guard-livereload', '~> 2.5', require: false
+end
+gem 'colorize'
 # gem 'stripe'
 # gem 'impressionist'
 # gem 'scoped_search'

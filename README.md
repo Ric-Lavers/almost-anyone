@@ -26,6 +26,8 @@ ___
 
 [scoped_search](https://github.com/wvanbergen/scoped_search)
 
+[guard-livereload](https://github.com/guard/guard-livereload)
+
 ## Elements
 
 
@@ -39,12 +41,29 @@ rails new almost-anyone --skip test -d postgresql
 1. **install shrine** - using Github guide
   * **link ASW**
   * create profile scaffold
+
   ```
-  rails g scaffold Profile user:reference brand:string location:string phone_number:string image_data:text
+  rails g scaffold Profile user:reference brand:string  location:string phone_number:string image_data:text bio:text
   ```
+1. **install rspec** - using Github guide
+1. add first_name & last_name to User model with devise registration [github guide](https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address)
+1. create Tour scaffold
+    ```
+    rails g scaffold Tour user:reference title:string  description:text country:string image_data:text bio:text start_date:timestamp end_date:timestamp min_cost:integer max_cost:integer
+
+    rails db:migrate
+    ```
+1. create genre table.
+
+```
+    rails g model Genre name
+    rails db:migrate
+
+    rails g migration CreateJoinTableProfileGenre profile genre
+    rails g migration CreateJoinTableTourGenre tour genre
+      ```
 
 
-1. **install rspec**
 
 
 

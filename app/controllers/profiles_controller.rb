@@ -24,8 +24,20 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
+    temp_genres = params[:profile][:genres]
+    params[:profile].delete("genres")
+    
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    temp_genres.each{|genre_id|
+      @profile.genres << Genre.find(genre_id) unless genre_id.blank?
+    }
+
+
+    # @genres_list.each do |genre|
+    #   Genre.create!(name: genre, profile_id: current_user.profile.id)
+    # end
+
 
     respond_to do |format|
       if @profile.save
@@ -70,6 +82,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:user_id, :brand, :location, :phone_number, :image, :bio)
+      params.require(:profile).permit(:user_id, :brand, :location, :phone_number, :image, :bio, :genres => [])
     end
 end
