@@ -16,6 +16,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
 end
 gem 'colorize'
+gem 'jquery-ui-rails'
 # gem 'stripe'
 # gem 'impressionist'
 # gem 'scoped_search'

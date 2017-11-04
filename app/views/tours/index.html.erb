@@ -2,7 +2,7 @@
 
 <h1>Tours</h1>
 
-<table>
+<table class="table-border">
   <thead>
     <tr>
       <th>email</th>
@@ -11,7 +11,9 @@
       <th>Description</th>
       <th>Country</th>
       <th>Image data</th>
+
       <th>Bio</th>
+      <th>dates</th>
       <th>Start date</th>
       <th>End date</th>
       <th>Min cost</th>
@@ -24,20 +26,43 @@
     <% @tours.each do |tour| %>
       <tr>
         <td><%= tour.user.email %></td>
-        <td><%= tour.user.profile.brand %></td>
+        <%#unless tour.user.profile == nil %>
+          <td><%= tour.user.profile.brand %></td>
+        <%#end%>
         <td><%= tour.title %></td>
         <td><%= tour.description %></td>
         <td><%= tour.country %></td>
         <td> <img src="<%= tour.image_url %>" alt="" height="10"> </td>
         <td><%= tour.bio %></td>
-        <td><%= tour.start_date %></td>
-        <td><%= tour.end_date %></td>
-        <td><%= tour.min_cost %></td>
-        <td><%= tour.max_cost %></td>
+
+        <br>
+        <td>
+          <div class="title">
+            <%if tour.start_date.strftime("%B")==tour.end_date.strftime("%B")%>
+              <%= tour.start_date.strftime("%B") %>
+            <%else%>
+              <%= tour.start_date.strftime("%B") %>  to   <%= tour.end_date.strftime("%B") %> <%= tour.end_date.strftime("%Y") %>
+            <%end%>
+          </div>
+          <div class="cal">
+            <div class="heading">Sun</div><div class="heading">Mon</div><div class="heading">Tue</div><div class="heading">Wed</div><div class="heading">Thu</div><div class="heading">Fri</div><div class="heading">Sat</div>
+
+
+            <%(@x.calendar(tour.start_date, tour.end_date)).each{|i|%>
+              <div class="<%=i[0]%>"> <p><%=i[1]%></p></div>
+              <%}%>
+          </div>
+        </td>
+        <td> <strong> <%= tour.start_date.strftime("%d/%m/%y %A") %></strong></td>
+        <td><strong><%= tour.end_date.strftime("%d/%m/%y %A") %> </strong> </td>
+        <td>$<%= tour.min_cost %></td>
+        <td>$<%= tour.max_cost %></td>
         <td><%= link_to 'Show', tour %></td>
         <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
         <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <br>
+
     <% end %>
   </tbody>
 </table>

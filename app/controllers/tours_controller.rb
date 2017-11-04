@@ -5,6 +5,7 @@ class ToursController < ApplicationController
   # GET /tours.json
   def index
     @tours = Tour.all
+    @x = Calendar.new()
   end
 
   # GET /tours/1
