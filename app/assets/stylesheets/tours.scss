@@ -1,31 +1,107 @@
 // Place all the styles related to the Tours controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$b-c: #282C34;
+$headings: #E2C08D;
+.development{
+  display: flex;
+  align-items: stretch;
+  a:visited{
+    color:#E06C75;
+  }
+  a{
+    color:#73C990;
+  }
+}
+body{
+  background-color: $b-c;
+}
+h1{
+  color:#E2C08D;
+}
+.tour-link{
+  cursor: pointer;
+}
+.tour{
+  color:$b-c;
+  display: grid;
+  width: 100%;
+  // border: 2px solid green;
+  background-color: $b-c;
+  grid-template-columns:  repeat(5,20%);
+  grid-template-rows:repeat(5,36px);
+  grid-gap: 1px;
+  grid-template-areas:
+  "..... ..... .... agent_logo agent_logo"
+  "title title .... agent_logo agent_logo"
+  "headline headline headline contact contact"
+  "dates dates dates space space"
+  "price price price space space";
+}
+.tour-info{
+  background-color: #B0B7BA;
+  width: 100%;
+  height: 100%;
 
-.show-tour img{
-  height: 100px;
-  border-radius: 40% 40% 0 0;
+}
+.title{
+  grid-area: title;
+  width: auto;
+  margin-left: 0;
+  padding: 6px 26px;
+}
+.agent-logo{
+  grid-area: agent_logo;
+  box-sizing: border-box;
+  background-color: $b-c
+}
+.a-logo{
+  padding:1px;
+  height: 100%;width:98%;
+  object-position: center;
+  object-fit:cover;
+  border-radius: 36px 36px 0 0 ;
+  -webkit-mask-image:
+  linear-gradient(0deg,
+                    rgba(0,0,0,0.2) 7%, rgba(0,0,0,1) 80%);
 }
 
-img{
-  height: 100px;
+.headline{
+  grid-area: headline;
+  font-size: .9em;
+  padding: 8px;
+
+}
+.contact{
+  grid-area: contact;
+}
+.dates{
+  grid-area: dates;
+  text-align:center;
+}
+.price{
+  grid-area: price;
+  text-align:center;
+}
+.space{
+  grid-area: space;
 }
 
-.table-border{
-  border: 1px dashed black;
-}
+
+
+
 table tr{
   background-color: #FFFCF7;
 }
 $dayWidth:26px;
-.title{
+.cal-title{
   text-align: center;
-  font-size: .8em;
+  font-size: 1.1em;
 }
 .cal{
   display:grid;
   grid-template-columns:  repeat(7,$dayWidth);
-  grid-template-rows:16px;
+  grid-template-rows:16px 16px;
   grid-auto-rows: $dayWidth;
   grid-gap: 2px;
   font-size: .6em;
@@ -37,11 +113,38 @@ $dayWidth:26px;
     padding:8px;
   }
 }
+.week{
+  display:grid;
+  grid-template-columns:  repeat(3,$dayWidth);
+  grid-template-rows:16px 16px 16px;
+  grid-auto-rows: $dayWidth;
+  grid-gap: 2px;
+  font-size: .6em;
+  color:white;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  p{
+    padding:8px;
+  }
+
+}
+.cal-title{
+  grid-column: 1 / 8;
+}
+.week-title{
+  grid-column: 1 / 4;
+}
 .heading{
   background-color: #FEF6AE;
   color: black;
   height: 100%;
   width:  $dayWidth;
+  font-weight: bolder;
+
+}
+.sTot{
+  font-size: 0.6em;
 }
 .noDay{
 	height: $dayWidth;
@@ -53,5 +156,12 @@ $dayWidth:26px;
 	background-color: green;
 }
 .bookedDay{
+  height: $dayWidth;
+	width:$dayWidth;
 	background-color: red;
+}
+.yellow{
+  height: $dayWidth;
+  width:$dayWidth;
+  background-color: #FF7B2F;
 }

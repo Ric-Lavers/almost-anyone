@@ -30,15 +30,28 @@
     <%= @tour.bio %>
   </p>
 
-  <p>
-    <strong>Start date:</strong>
-    <%= @tour.start_date %>
-  </p>
+  <!-- ===================calendar======================== -->
+        <div class="cal">
+          <div class="cal-title">
+            <%if @tour.start_date.strftime("%B")==@tour.end_date.strftime("%B")%>
+              <%= @tour.start_date.strftime("%B") %> <%= @tour.start_date.strftime("%Y") %>
+            <%else%>
+              <%= @tour.start_date.strftime("%B") %>  to   <%= @tour.end_date.strftime("%B") %> <%= @tour.end_date.strftime("%Y") %>
+            <%end%>
+          </div>
+          <div class="heading">Sun</div><div class="heading">Mon</div><div class="heading">Tue</div><div class="heading">Wed</div><div class="heading">Thu</div><div class="heading">Fri</div><div class="heading">Sat</div>
 
-  <p>
-    <strong>End date:</strong>
-    <%= @tour.end_date %>
-  </p>
+
+          <%cal =  @cal.new(@tour.start_date, @tour.end_date)%>
+          <%cal.createCalendar%>
+          <% puts "#{cal.cal}".blue%>
+          <%cal.bookDays(
+          DateTime.new(2018, 3, 21),DateTime.new(2018, 3, 9),DateTime.new(2018, 3, 10))%>
+          <% puts "#{cal.cal}".green%>
+          <%=cal.displayCalendar.html_safe%>
+
+        </div>
+  <!-- ===================calendar======================== -->
 
   <p>
     <strong>Min cost:</strong>
@@ -48,7 +61,7 @@
   <p>
     <strong>Max cost:</strong>
     $ <%= @tour.max_cost %>
-    
+
   </p>
 
   <p>
