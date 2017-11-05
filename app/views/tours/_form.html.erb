@@ -1,0 +1,65 @@
+<%= form_with(model: tour, local: true) do |form| %>
+  <% if tour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tour.errors.count, "error") %> prohibited this tour from being saved:</h2>
+
+      <ul>
+      <% tour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :tour_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :tour_description %>
+  </div>
+
+
+
+  <div class="field">
+    <%= form.label :image_data %>
+    <%= form.file_field :image, id: :tour_image_data %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bio %>
+    <%= form.text_area :bio, id: :tour_bio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.datetime_select :start_date, id: :tour_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.datetime_select :end_date, id: :tour_end_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :min_cost %>
+    <%= form.number_field :min_cost, id: :tour_min_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :max_cost %>
+    <%= form.number_field :max_cost, id: :tour_max_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genres %>
+    <%= form.collection_select(:genres, Genre.order(:name),:id,:name,{}, {multiple: true, include_blank: false}) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

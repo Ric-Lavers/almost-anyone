@@ -4,8 +4,9 @@
 
 <table>
   <thead>
-    <tr>
-      <th>User</th>
+    <tr class="titles">
+      <th>Email</th>
+      <th>Name</th>
       <th>Brand</th>
       <th>Location</th>
       <th>Phone number</th>
@@ -17,12 +18,14 @@
 
   <tbody>
     <% @profiles.each do |profile| %>
+
       <tr>
-        <td><%= profile.user %></td>
+        <td><%= profile.user.email%> </td>
+        <td><%= profile.user.first_name%> <%=profile.user.last_name%></td>
         <td><%= profile.brand %></td>
         <td><%= profile.location %></td>
         <td><%= profile.phone_number %></td>
-        <td><%= profile.image_data %></td>
+        <td> <img src="<%= profile.image_url %>" alt=""></td>
         <td><%= profile.bio %></td>
         <td><%= link_to 'Show', profile %></td>
         <td><%= link_to 'Edit', edit_profile_path(profile) %></td>

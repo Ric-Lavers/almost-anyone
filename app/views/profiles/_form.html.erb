@@ -38,6 +38,11 @@
     <%= form.text_area :bio, id: :profile_bio %>
   </div>
 
+  <div class="field">
+    <%= form.label :genres %>
+    <%= form.collection_select(:genres, Genre.order(:name),:id,:name,{}, {multiple: true, include_blank: false}) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

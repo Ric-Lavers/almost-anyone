@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+  <div class="show-tour">
+  <p>
+    <strong>User:</strong>
+    <%#= @tour.user.profile.brand %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @tour.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @tour.description %>
+  </p>
+
+  <p>
+    <strong>Country:</strong>
+    <%= @tour.country %>
+  </p>
+
+  <p>
+    <strong>Image</strong>
+    <img src=" <%= @tour.image_url %>" alt="">
+  </p>
+
+  <p>
+    <strong>Bio:</strong>
+    <%= @tour.bio %>
+  </p>
+
+  <p>
+    <strong>Start date:</strong>
+    <%= @tour.start_date %>
+  </p>
+
+  <p>
+    <strong>End date:</strong>
+    <%= @tour.end_date %>
+  </p>
+
+  <p>
+    <strong>Min cost:</strong>
+    $ <%= @tour.min_cost %>
+  </p>
+
+  <p>
+    <strong>Max cost:</strong>
+    $ <%= @tour.max_cost %>
+    
+  </p>
+
+  <p>
+    <strong>genres:</strong>
+    <% @tour.genres.each do |genre| %>
+    <%= genre.name%>
+    <%end%>
+  </p>
+</div>
+<%= link_to 'Edit', edit_tour_path(@tour) %> |
+<%= link_to 'Back', tours_path %>

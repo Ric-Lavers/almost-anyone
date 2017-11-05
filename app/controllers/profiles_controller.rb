@@ -24,8 +24,14 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
+    temp_genres = params[:profile][:genres]
+    params[:profile].delete("genres")
+
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    temp_genres.each{|genre_id|
+      @profile.genres << Genre.find(genre_id) unless genre_id.blank?
+    }
 
     respond_to do |format|
       if @profile.save
@@ -41,6 +47,16 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+
+    @profile.genres = [] unless params[:profile][:genres].count == 1
+
+    temp_genres = params[:profile][:genres]
+    params[:profile].delete("genres")
+
+    temp_genres.each{|genre_id|
+      @profile.genres << Genre.find(genre_id) unless genre_id.blank?
+    }
+
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -70,6 +86,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:user_id, :brand, :location, :phone_number, :image, :bio)
+      params.require(:profile).permit(:user_id, :brand, :location, :phone_number, :image, :bio, :genres => [])
     end
 end

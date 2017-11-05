@@ -39,5 +39,14 @@
     <%= @profile.bio %>
 </p>
 
+<p>
+  <strong>Genres:</strong></p>
+<p>
+    <% @profile.genres.each do|genre|  %>
+
+    <%=genre.name%>
+    <%end%>
+</p>
+
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
