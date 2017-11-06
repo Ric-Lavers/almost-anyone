@@ -17,6 +17,10 @@
  /*
  *= require jquery-ui
  */
+ h1{
+   color:#E2C08D;
+ }
+ $sub-H:#E0DCD2;
 *{
   margin: 0 auto;
   box-sizing: border-box;
@@ -36,3 +40,78 @@
  .container{
    margin: 0 24px;
  }
+
+ h4{
+  color: $sub-H;
+  font-weight: 300;
+ }
+
+ //Logout
+.dropdown{
+    margin:4px;
+    padding:4px;
+    width: 50px;
+    height:50px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    // background-color: #262626;
+    color: $sub-H;
+    border-radius:8px 8px 0 0 ;
+    text-align: center;
+    .menu{
+      font-weight: 400;
+    }
+}
+
+.login_out input{
+  background-color: white;
+  color: #262626;
+  border: 0;
+  width:100%;
+  height: 100%;
+  cursor: pointer;
+}
+input, textarea, select, button, a{
+  font-size: 11px ;
+}
+
+.drop{
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  background-color: transparent;
+  margin:8px -8px;
+  color: #262626;
+    p{
+      font-size: .7em;
+      text-align: center;
+    }
+}
+.dropdown-content{
+  width: 80px;
+  margin:8px -8px;
+  border-radius:0 0 8px 8px;
+  padding:8px;
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: #262626;
+  cursor: pointer;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+}
+.login_out:hover, .login_out input:hover{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  color:white;
+}
+.dropdown:hover{
+  cursor:default;
+}
+.hamburger{
+  width: 100%; height: 100%;
+}

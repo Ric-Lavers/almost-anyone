@@ -80,6 +80,30 @@ temp_genres.each{|genre_id|
   @tour.genres << Genre.find(genre_id) unless genre_id.blank?
 }
 ```
+### Calendar Model
+
+The custom calendar model uses a number of methods to display the Tour date range as either a week summary or total days, it also displays the booked days
+
+**Calendar.new(start_date, end_date)** - Creates a new calendar object with
+
+##### *methods*
+
+**createCalendar**  - creates a calendar array stored as @cal
+
+**bookDays(*days)** - alters the @cal array to include true and false (available and booked) booleans
+
+**displayCalendar** - outputs the @cal array as html for the calendar Sunday to Monday, with project css appropriate class tags (note: that .html_safe rails method needs to be added)
+
+**displayWeek**     - outputs the @cal array as html for the week Sunday to Thursday, Friday, Saturday, with project css appropriate class tags (note: that .html_safe rails method needs to be added). These with entertainment bookings the most common day to book is Fridays and Saturdays.
+
+### bookings
+
+```
+rails g scaffold Booking tour:references date:timestamp
+rails db:migrate
+```
+change routes to nest booking in tours
+
 
 Make the rating model
 ```

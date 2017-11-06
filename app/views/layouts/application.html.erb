@@ -13,10 +13,39 @@
   <body>
 
   <nav class="navigation">
-    <div class="">
+
+
+    <div class="dropdown">
+    <%= image_tag "Hamburger_icon.png", class: "hamburger"%>
+      <div class="drop"><p>
+        <% if @current_user != nil %>
+           <%=@current_user.email.split("@")[0][0..16]%>
+        <% end %>
+       </p>
+      </div>
+
+      <% if user_signed_in? %>
+
+        <div class="dropdown-content">
+        <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
+        <%= button_to('My Profile',profile_path(current_user.id),method: :get ,form_class: "login_out")%>
+        <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
+        </div>
+      <% else %>
+        <div class="dropdown-content">
+        <%= button_to('Login', new_user_session_path, form_class: "login_out")%>
+        </div>
+      <% end %>
+    </div>
+
+
+
+
+
+    <!-- <div class="">
       <h3>MENU</h3>
       <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
-    </div>
+    </div> -->
     <%=link_to root_path, class: "logo" do %>
       <%=image_tag "almost-anyone.png", class: "logo"%>
     <%end%>
@@ -25,14 +54,15 @@
 
     <% else %>
         <div>
-        <%= button_to('Login', new_user_session_path, form_class: "login_out")  %>
+        <%= button_to('Login', new_user_session_path, form_class: "login")  %>
         </div>
     <% end %>
   </nav>
+
   <div class="container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>  
+    <%= yield %>
   </div>
 
 

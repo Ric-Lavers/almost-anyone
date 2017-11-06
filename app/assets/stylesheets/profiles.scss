@@ -1,3 +1,78 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$b-c:#282C34;
+
+.profile-img{
+  height: 150px;
+}
+.left{
+  text-align: left !important;
+  padding-left: 8px;
+}
+.white{
+  color: #FEFBF6;
+}
+.profile{
+  max-width: 500px;
+  color:$b-c;
+  display: grid;
+  width: 100%;
+  // border: 2px solid green;
+  background-color: $b-c;
+  grid-template-columns:  1fr 2fr 1fr;
+  grid-template-rows:36px 36px auto 36px auto auto auto;
+  grid-gap: 1px;
+  grid-template-areas:
+  "edit ..... logo"
+  "msg stars logo"
+  "genre genre genre"
+  "location location location"
+  "link link link"
+  "bio bio bio"
+  "gigs gigs gigs"
+  ;
+}
+.part{
+  background-color: #B0B7BA;
+  width: 100%;
+  height: 100%;
+  // border: 1px solid red;
+  text-align: center;
+}
+.edit{
+  grid-area: edit;
+}
+.pro-logo{
+  grid-area: logo;
+  background-color: $b-c;
+}
+.profile-img{
+  height: 100%;width:98%;
+  object-position: center;
+  object-fit:cover;
+  border-radius: 36px 36px 0 0 ;
+  -webkit-mask-image:
+  linear-gradient(0deg,
+  rgba(0,0,0,0.2) 7%, rgba(0,0,0,1) 80%);}
+.msg{
+  grid-area: msg;
+}
+.stars{
+  grid-area: stars;
+}
+.genre{
+  grid-area: genre;
+}
+.location{
+  grid-area: location;
+}
+.links{
+  grid-area: link;
+}
+.bio{
+  grid-area: bio;
+}
+.gigs{
+  grid-area: gigs;
+}

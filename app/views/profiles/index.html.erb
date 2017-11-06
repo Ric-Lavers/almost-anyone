@@ -2,38 +2,37 @@
 
 <h1>Profiles</h1>
 
-<table>
-  <thead>
-    <tr class="titles">
-      <th>Email</th>
-      <th>Name</th>
-      <th>Brand</th>
-      <th>Location</th>
-      <th>Phone number</th>
-      <th>Image data</th>
-      <th>Bio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @profiles.each do |profile| %>
 
-      <tr>
-        <td><%= profile.user.email%> </td>
-        <td><%= profile.user.first_name%> <%=profile.user.last_name%></td>
-        <td><%= profile.brand %></td>
-        <td><%= profile.location %></td>
-        <td><%= profile.phone_number %></td>
-        <td> <img src="<%= profile.image_url %>" alt=""></td>
-        <td><%= profile.bio %></td>
-        <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="profile">
+      <div class="part edit"><%= link_to 'Edit', edit_profile_path(profile) %></div>
+      <div class="part pro-logo"><img class="profile-img" src="<%= profile.image_url %>" alt=""></div>
+      <div class="part msg">contact</div>
+      <div class="part stars">⭐️⭐️⭐️⭐️⭐️</div>
+      <div class="part genre">
+        <% profile.genres.each_with_index{|i, index|%>
+          <%if index == profile.genres.size - 1%>
+            <%=i.name%>
+          <%else%>
+            <%=i.name%>,
+          <%end%>
+          <%}%>
+      </div>
+      <div class="part location">Looking for gigs in <strong><%= profile.location%></strong> </div>
+      <div class="part links"><a href="suddenmovesevents.com.au">suddenmovesevents.com.au</a></div>
+      <div class=" left part bio"> <p class="left white"> bio </p> <%=profile.bio%></div>
+      <div class=" left part gigs"> <p class="left white">
+Previous Gigs </p> <a href="#">Timmy trumpet</a> <br>
+      <a href="#">Dj Slime</a> </div>
+
+    </div>
+
+
+        <%= link_to 'Show', profile %>
+        <%= link_to 'Edit', edit_profile_path(profile) %>
+        <%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+
     <% end %>
-  </tbody>
-</table>
 
 <br>
 
