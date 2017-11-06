@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Tours</h1>
-<%@tours = @tours.sort_by{|tour|tour.start_date}%>
+<%puts "#{@tours.inspect}".green%>
+<%if @tours.count < 1%>
+  <%#@tours = @tours.sort_by{|tour|tour.start_date}%>
+<%end%>
     <% @tours.each do |tour| %>
     <%=link_to tour_path(tour.id), class: "tour-link" do%>
       <div class="tour">

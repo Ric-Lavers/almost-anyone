@@ -1,52 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-</p>
-<p>
-  <%= @profile.user.email %>
-</p>
+<div class="profile">
+  <div class="part edit"><%= link_to 'Edit', edit_profile_path(@profile) %></div>
+  <div class="part pro-logo"><img class="profile-img" src="<%= @profile.image_url %>" alt=""></div>
+  <div class="part msg">contact</div>
+  <div class="part stars">⭐️⭐️⭐️⭐️⭐️</div>
+  <div class="part genre">
+    <% @profile.genres.each_with_index{|i, index|%>
+      <%if index == @profile.genres.size - 1%>
+        <%=i.name%>
+      <%else%>
+        <%=i.name%>,
+      <%end%>
+      <%}%>
+  </div>
+  <div class="part location">Looking for gigs in <strong><%= @profile.location%></strong> </div>
+  <div class="part links"><a href="suddenmovesevents.com.au">suddenmovesevents.com.au</a></div>
+  <div class=" left part bio"> <p class="left white"> bio </p> <%=@profile.bio%></div>
+  <div class=" left part gigs"> <p class="left white">
+Previous Gigs </p> <a href="#">Timmy trumpet</a> <br>
+  <a href="#">Dj Slime</a> </div>
 
-<p>
-  <strong>Brand:</strong>
-</p>
-<p>
-  <%= @profile.brand %>
-</p>
+</div>
 
-<p>
-  <strong>Location:</strong>
-</p>
-<p>
-  <%= @profile.location %>
-</p>
 
-<p>
-  <strong>Phone number:</strong></p>
-<p>
-  <%= @profile.phone_number %>
-</p>
-
-<p>
-  <strong>Image data:</strong></p>
-<p>
-  <img src="<%= @profile.image_url %>" alt="">
-</p>
-
-<p>
-  <strong>Bio:</strong></p>
-<p>
-    <%= @profile.bio %>
-</p>
-
-<p>
-  <strong>Genres:</strong></p>
-<p>
-    <% @profile.genres.each do|genre|  %>
-
-    <%=genre.name%>
-    <%end%>
-</p>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

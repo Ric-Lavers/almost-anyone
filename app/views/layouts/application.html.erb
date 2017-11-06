@@ -4,6 +4,7 @@
     <title>AlmostAnyone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,7 +15,7 @@
 
   <nav class="navigation">
 
-
+<%puts "#{}".green%>
     <div class="dropdown">
     <%= image_tag "Hamburger_icon.png", class: "hamburger"%>
       <div class="drop"><p>
@@ -28,7 +29,7 @@
 
         <div class="dropdown-content">
         <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-        <%= button_to('My Profile',profile_path(current_user.id),method: :get ,form_class: "login_out")%>
+        <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
         <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
         </div>
       <% else %>

@@ -33,14 +33,12 @@ class ProfilesController < ApplicationController
     temp_genres.each{|genre_id|
       @profile.genres << Genre.find(genre_id) unless genre_id.blank?
     }
-    puts "=" * 20
-    puts "#{params}".green
-    puts "=" * 20
+
 
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render :show, status: :created, location: @profile }
+        format.json { render root_path, status: :created, location: @profile }
       else
         format.html { render :new }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
@@ -64,7 +62,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
-        format.json { render :show, status: :ok, location: @profile }
+        format.json { render root_path, status: :ok, location: @profile }
       else
         format.html { render :edit }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
