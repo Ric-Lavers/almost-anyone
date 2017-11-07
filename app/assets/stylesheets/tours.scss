@@ -24,9 +24,122 @@ body{
 .tour-form{
   color:#FFFCF7;
 }
+
+// tour/show
 .show-tour{
+  margin-right: -24px;
+  margin-left: -24px;
   color:white;
+  .show-image{
+    width: 100vw;
+    height: 50vh;
+    position: fixed;
+    z-index: -1;
+    .show-img{
+      width: 100%;height: 100%;
+      object-fit:cover;
+    }
+  }
+  .the-tour{
+    text-align: left;
+    padding-top:70%;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+    color:$b-c;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows:36px 36px 36px auto 36px auto auto;
+    grid-gap: 1px;
+    grid-template-areas:
+    "...... .......  agent_logo"
+    "title  .......  agent_logo"
+    "h_line h_line brand"
+    "dates dates offers"
+    "price price make_offer"
+    "bio bio bio"
+    "book book book"
+    ;
+    .item{
+      background: rgba(0,0,0,0.5);
+      width: 100%;
+    }
+    .show-title{
+      grid-area: title;
+    }
+    .agent-brand{
+      grid-area: brand;
+    }
+    .show-agent-logo{
+      grid-area: agent_logo;
+      .show-agent-logo-img{
+        width: 100%;height: 100%;
+        max-width: 100px;
+        border-radius: 32px 32px 0 0;
+        object-fit:cover;
+      }
+    }
+    .offers{
+      display: flex;
+      grid-area: offers;
+      align-items:center;
+      text-align: center;
+    }
+    .show-headline{
+      grid-area: h_line;
+    }
+    .cal{
+      grid-area: dates;
+    }
+    .show-price{
+      padding:8px;
+      text-align: left;
+      grid-area: price;
+    }
+    .bio{
+      grid-area: bio;
+    }
+    .order-render{
+      background-color: grey;
+      color: white;
+      grid-area: book;
+    }
+    .show-make-offer{
+      grid-area: make_offer;
+      display: flex;
+      align-items:center;
+      justify-content:center;
+      button{
+        // color: white !important;
+      border:1px solid white;
+      border-radius: 6px;}
+    }
+    .order-render{
+      color:white !important;
+      background-color: white !important;
+    }
+
+
+  }
+
+
+
 }
+
+
+
+.rics-little-div{
+  background-color: white;
+  .field{
+    color:#1C1E23;
+    select{
+      border: 1px solid #ccc;
+    }
+  }
+  input{border: 1px solid #ccc;}
+}
+
+
 .tour-link{
   cursor: pointer;
   text-decoration: none;

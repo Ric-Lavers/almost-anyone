@@ -6,6 +6,7 @@ class OffersController < ApplicationController
   def index
     @tours      = Tour.where(user_id: current_user.id)
     @offers     = Offer.where(user_id: current_user.id)
+
   end
 
   # GET /offers/1

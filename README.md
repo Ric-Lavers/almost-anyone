@@ -103,28 +103,25 @@ Add Stripe
 [stripe guide](https://stripe.com/docs/checkout/rails)
 
 
-
-
-
-
-
-
+]
 *to be continued*
+
 ### bookings
 
+First the user must request a Booking with a Offer.
 ```
 rails g scaffold Offer tour:references user:references date:date price:integer location:string
 
 rails g scaffold Booking tour:references date:date
 rails db:migrate
 ```
-change routes to nest booking in tours
+Now take the Offer form and make a partial copy in the views/tour then in tour/show.html.erb add a render to that partial. Change the form to have a hidden_field for the tour_id input and pass the tour_id into the partial and modify the date input (see bugs and fixes).
 
 
-Make the rating model
-```
- rails g model Rating profile:references user:references score:integer
-```
+### Make the rating model
+
+ratyrate gem
+
 in ```db/migrate/<the new migration> ``` add default to 0 to score ```t.integer :score, default: 0```
 
 ```
@@ -141,13 +138,15 @@ in ```db/migrate/<the new migration> ``` add default to 0 to score ```t.integer 
 
 
 
-### Prerequisites
+### Bugs and Fixes
 
-What things you need to install the software and how to install them
+* Tour index page faults when Tour is created and no profile created. ```<%=tour.user.profile.brand%>``` **fix** forcing the user to create a profile on sign up and removing any seed data that was made without a seed profile.
 
-```
-Give examples
-```
+* Date selecting for offer dates and booking dates are not restricted to the Tour dates. **fix**```<%= form.date_select :date, start_year:  @tour.start_date.year, end_year:  @tour.start_date.year ``` => will restrict the year to only the Tour years, However there is **not** a way to restrict the days and months to only show the ranged date. The most commonly suggested fix is to use a jQuery date picker calendar.
+
+However, validators are added to the Models preventing input dates outside of the Tour dates.
+
+
 
 ### Installing
 
@@ -169,7 +168,8 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+Testing was a issue to due lack of time to learn Rspec.
+However when developing the Calendar model I tested constantly using a simple method of writing out the desired outcome and then check it against my actual outcome, if they were the same it passed true and i knew the my test had past.  
 
 ### Break down into end to end tests
 

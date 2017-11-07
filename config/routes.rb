@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :bookings
   post '/rate' => 'rater#create', :as => 'rate'
   resources :offers
   resources :charges
-resource :booking
+  # resource :booking
   resources :tours do
 
   end

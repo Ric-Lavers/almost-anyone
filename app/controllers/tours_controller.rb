@@ -12,8 +12,11 @@ class ToursController < ApplicationController
   # GET /tours/1
   # GET /tours/1.json
   def show
+    puts "#{params}".red
+    @offers = Offer.where(tour_id: :id)
     @offer = Offer.new
     @cal = Calendar
+    @booking  = Booking.new
   end
 
   # GET /tours/new

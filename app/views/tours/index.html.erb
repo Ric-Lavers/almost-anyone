@@ -15,6 +15,7 @@
         <%end%>
         </div>
         <div class="headline tour-info"><%= tour.description %></div>
+
         <div class="contact tour-info"><%=tour.user.profile.brand%></div>
         <div class="dates tour-info"><%= tour.start_date.strftime("%-d/%-m/%y") %> to <%= tour.end_date.strftime("%-d/%-m/%y") %> </div>
         <div class="price tour-info">$<%= tour.min_cost %> to
@@ -36,7 +37,15 @@
 
                   <%cal =  @cal.new(tour.start_date, tour.end_date)%>
                   <%cal.createCalendar%>
-                  <%cal.bookDays(
+                  <%@list = []%>
+
+                    <%temp = Booking.where(tour_id: tour.id)%>
+
+                    <%temp.each{|i|%>
+                      <%@list << i.date%>
+                      <%}%>
+                  <%cal.bookDays(@list)%>
+                  <%#cal.bookDays(
                   DateTime.new(2018, 1, 11),DateTime.new(2018, 1, 12),DateTime.new(2018, 1, 10),DateTime.new(2018, 1, 14),DateTime.new(2018, 1, 13))%>
 
                   <%#cal.displayCalendar.html_safe%>
