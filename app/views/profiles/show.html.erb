@@ -4,7 +4,7 @@
   <div class="part edit"><%= link_to 'Edit', edit_profile_path(@profile) %></div>
   <div class="part pro-logo"><img class="profile-img" src="<%= @profile.image_url %>" alt=""></div>
   <div class="part msg">contact</div>
-  <div class="part stars">⭐️⭐️⭐️⭐️⭐️</div>
+  <div class="part stars"><h1> <%= rating_for current_user, 'rating' %> </h1></div>
   <div class="part genre">
     <% @profile.genres.each_with_index{|i, index|%>
       <%if index == @profile.genres.size - 1%>
@@ -22,7 +22,6 @@ Previous Gigs </p> <a href="#">Timmy trumpet</a> <br>
   <a href="#">Dj Slime</a> </div>
 
 </div>
-
 
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |

@@ -10,7 +10,9 @@
       <div class="tour">
         <div class="title tour-info"><%= tour.title %></div>
         <div class="agent-logo tour-info">
-        <%= image_tag tour.image_url, class: "a-logo"%>
+        <%if tour.image_url%>
+          <%= image_tag tour.image_url, class: "a-logo"%>
+        <%end%>
         </div>
         <div class="headline tour-info"><%= tour.description %></div>
         <div class="contact tour-info">contact</div>
@@ -35,7 +37,7 @@
                   <%cal =  @cal.new(tour.start_date, tour.end_date)%>
                   <%cal.createCalendar%>
                   <%cal.bookDays(
-                  DateTime.new(2018, 2, 21),DateTime.new(2018, 3, 9),DateTime.new(2018, 3, 10))%>
+                  DateTime.new(2018, 1, 11),DateTime.new(2018, 1, 12),DateTime.new(2018, 1, 10),DateTime.new(2018, 1, 14),DateTime.new(2018, 1, 13))%>
 
                   <%#cal.displayCalendar.html_safe%>
 

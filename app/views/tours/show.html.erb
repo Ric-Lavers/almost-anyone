@@ -2,7 +2,7 @@
   <div class="show-tour">
   <p>
     <strong>User:</strong>
-    <%#= @tour.user.profile.brand %>
+    <%= @tour.user.profile.brand %>
   </p>
 
   <p>
@@ -46,7 +46,7 @@
           <%cal.createCalendar%>
           <% puts "#{cal.cal}".blue%>
           <%cal.bookDays(
-          DateTime.new(2018, 3, 21),DateTime.new(2018, 3, 9),DateTime.new(2018, 3, 10))%>
+          DateTime.new(2018, 1, 11),DateTime.new(2018, 1, 12),DateTime.new(2018, 1, 10),DateTime.new(2018, 1, 14),DateTime.new(2018, 1, 13))%>
           <% puts "#{cal.cal}".green%>
           <%=cal.displayCalendar.html_safe%>
 
@@ -71,5 +71,11 @@
     <%end%>
   </p>
 </div>
+
+<h2> Submit an offer </h2>
+<div class="offer-form">
+  <%= render 'offer_form', tour_id: @tour.id, offer: @offer %>
+</div>
+
 <%= link_to 'Edit', edit_tour_path(@tour) %> |
 <%= link_to 'Back', tours_path %>

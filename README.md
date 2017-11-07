@@ -28,6 +28,8 @@ ___
 
 [guard-livereload](https://github.com/guard/guard-livereload)
 
+[discogs-wrapper](https://github.com/buntine/discogs)
+
 ## Elements
 
 
@@ -96,10 +98,24 @@ The custom calendar model uses a number of methods to display the Tour date rang
 
 **displayWeek**     - outputs the @cal array as html for the week Sunday to Thursday, Friday, Saturday, with project css appropriate class tags (note: that .html_safe rails method needs to be added). These with entertainment bookings the most common day to book is Fridays and Saturdays.
 
+Add Stripe
+
+[stripe guide](https://stripe.com/docs/checkout/rails)
+
+
+
+
+
+
+
+
+*to be continued*
 ### bookings
 
 ```
-rails g scaffold Booking tour:references date:timestamp
+rails g scaffold Offer tour:references user:references date:date price:integer location:string
+
+rails g scaffold Booking tour:references date:date
 rails db:migrate
 ```
 change routes to nest booking in tours

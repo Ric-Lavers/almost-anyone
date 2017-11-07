@@ -68,8 +68,8 @@
   background-color: white;
   color: #262626;
   border: 0;
-  width:100%;
-  height: 100%;
+  width:60px;
+  height: 40px;
   cursor: pointer;
 }
 input, textarea, select, button, a{
@@ -107,8 +107,6 @@ input, textarea, select, button, a{
     cursor: pointer;
 }
 .login_out:hover, .login_out input:hover{
-  width: 100%;
-  height: 100%;
   background-color: rgba(0,0,0,0.9);
   color:white;
 }

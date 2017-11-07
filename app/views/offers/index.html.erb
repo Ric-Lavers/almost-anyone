@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Offers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tour</th>
+      <th>User</th>
+      <th>Brand</th>
+      <th>Date</th>
+      <th>Offer</th>
+      <th>Asking</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= offer.tour.title %></td>
+        <td><%= offer.user.first_name %> <%= offer.user.last_name %></td>
+        <td><%=offer.user.profile.brand%></td>
+        <td><%= offer.date %></td>
+        <td>$<%= offer.price %></td>
+        <td>$<%= offer.tour.min_cost%> to $<%= offer.tour.max_cost%></td>
+        <td><%= offer.location %></td>
+        <td><%= link_to 'Show', offer %></td>
+        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
+        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Offer', new_offer_path %>

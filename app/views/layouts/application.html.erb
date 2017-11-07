@@ -29,8 +29,12 @@
 
         <div class="dropdown-content">
         <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-        <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
+        <%unless params[:controller] == "profiles" && params[:action] == "new"%>
+        <%puts "#{params[:controller]}      #{params[:action]}".green%>
+          <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
+        <%end%>
         <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
+        <%=link_to 'Plans', charges_path, class: "login_out"%>
         </div>
       <% else %>
         <div class="dropdown-content">
@@ -50,14 +54,18 @@
     <%=link_to root_path, class: "logo" do %>
       <%=image_tag "almost-anyone.png", class: "logo"%>
     <%end%>
-    <% if user_signed_in? %>
-        <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
+    <div class="">
+      <% if user_signed_in? %>
+          <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
+          <%=current_user.email%>
 
-    <% else %>
-        <div>
-        <%= button_to('Login', new_user_session_path, form_class: "login")  %>
-        </div>
-    <% end %>
+      <% else %>
+          <div>
+          <%= button_to('Login', new_user_session_path, form_class: "login")  %>
+          </div>
+      <% end %>
+    </div>
+
   </nav>
 
   <div class="container">

@@ -1,0 +1,28 @@
+// Place all the styles related to the charges controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.payment-option{
+  background-color: #E9BA6F;
+  width: 300px;
+  height: 112px;
+  border-radius: 18px;
+  margin-top:36px;
+  // margin-bottom: 30%;
+}
+.plan{
+  margin:12px;
+  padding-top:18px;
+  // margin-bottom: 30%;
+}
+.bottom{
+  height: 50%;
+  display: flex;
+}
+.cost{
+  text-align: center;
+  padding: 8px;
+  background-color: #FEF6AE;
+  border-radius: 18px;
+  width:120px;
+  height:36px;
+}

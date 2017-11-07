@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171103024737) do
+ActiveRecord::Schema.define(version: 20171106093831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "average_caches", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_average_caches_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_average_caches_on_rater_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "tour_id"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tour_id"], name: "index_bookings_on_tour_id"
+  end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -35,6 +54,27 @@ ActiveRecord::Schema.define(version: 20171103024737) do
     t.index ["tour_id", "genre_id"], name: "index_genres_tours_on_tour_id_and_genre_id"
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.bigint "tour_id"
+    t.bigint "user_id"
+    t.date "date"
+    t.integer "price"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tour_id"], name: "index_offers_on_tour_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+  end
+
+  create_table "overall_averages", force: :cascade do |t|
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "overall_avg", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "brand"
@@ -45,6 +85,30 @@ ActiveRecord::Schema.define(version: 20171103024737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "rates", force: :cascade do |t|
+    t.bigint "rater_id"
+    t.string "rateable_type"
+    t.bigint "rateable_id"
+    t.float "stars", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rateable_type", "rateable_id"], name: "index_rates_on_rateable_type_and_rateable_id"
+    t.index ["rater_id"], name: "index_rates_on_rater_id"
+  end
+
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.bigint "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
   create_table "tours", force: :cascade do |t|
@@ -74,14 +138,17 @@ ActiveRecord::Schema.define(version: 20171103024737) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "tours"
+  add_foreign_key "offers", "tours"
+  add_foreign_key "offers", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "tours", "users"
 end

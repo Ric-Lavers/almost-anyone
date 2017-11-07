@@ -3,6 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $b-c: #282C34;
 $headings: #E2C08D;
+
+.offer-form{
+  color:white;
+}
 .development{
   margin-bottom: 24px;
   display: flex;
@@ -17,7 +21,12 @@ $headings: #E2C08D;
 body{
   background-color: $b-c;
 }
-
+.tour-form{
+  color:#FFFCF7;
+}
+.show-tour{
+  color:white;
+}
 .tour-link{
   cursor: pointer;
   text-decoration: none;

@@ -12,6 +12,7 @@ class ToursController < ApplicationController
   # GET /tours/1
   # GET /tours/1.json
   def show
+    @offer = Offer.new
     @cal = Calendar
   end
 

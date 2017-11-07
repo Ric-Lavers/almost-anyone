@@ -17,10 +17,13 @@ group :development do
 end
 gem 'colorize'
 gem 'jquery-ui-rails'
-# gem 'stripe'
+gem 'stripe'
+gem 'ratyrate'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 # gem 'impressionist'
 # gem 'scoped_search'
 # gem 'mailgun-ruby'
+# gem "discogs-wrapper"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
