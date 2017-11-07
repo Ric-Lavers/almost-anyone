@@ -13,63 +13,15 @@
 
 <body>
 
-  <nav class="navigation">
-
-    <%puts "#{}".green%>
-      <div class="dropdown">
-      <%= image_tag "Hamburger_icon.png", class: "hamburger"%>
-        <% if user_signed_in? %>
-
-          <div class="dropdown-content">
-          <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-          <%unless params[:controller] == "profiles" && params[:action] == "new"%>
-            <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
-          <%end%>
-
-          <p><%=link_to 'Password', edit_user_registration_path, class: "login_out"%></p>
-          <p><%=link_to 'Plans', charges_path, class: "login_out"%></p>
-          <p><%=link_to 'Offers', offers_path, class: "login_out"%></p>
-          </div>
-        <% else %>
-          <div class="dropdown-content">
-          <%= button_to('Login', new_user_session_path, form_class: "login_out")%>
-          </div>
-        <% end %>
-      </div>
-
-
-
-
-
-      <!-- <div class="">
-        <h3>MENU</h3>
-        <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
-      </div> -->
-      <%=link_to root_path, class: "logo" do %>
-        <%=image_tag "almost-anyone.png", class: "logo"%>
-      <%end%>
-      <div class="">
-        <% if user_signed_in? %>
-            <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-            <h6>   <% if current_user != nil %>
-                 <%=current_user.email.split("@")[0][0..16]%>
-              <% end %></h6>
-
-        <% else %>
-            <div>
-            <%= button_to('Login', new_user_session_path, form_class: "login")  %>
-            </div>
-        <% end %>
-      </div>
-
-    </nav>
+<%=render 'layouts/nav'%>
 
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
-  </div>
 
+    <%= yield %>
+
+  </div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 
   </body>

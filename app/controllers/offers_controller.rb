@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /offers
   # GET /offers.json
   def index
@@ -30,11 +30,13 @@ class OffersController < ApplicationController
     @offer.user_id = current_user.id if current_user
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to tour_url(@booking.tour_id), notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
-        format.html { render :new }
+        puts "#{params}".red
+        format.html { redirect_to tour_url(@offer.tour_id), notice: 'offer was unsuccessful due to reasons'}
         format.json { render json: @offer.errors, status: :unprocessable_entity }
+
       end
     end
   end

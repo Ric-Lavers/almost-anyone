@@ -8,19 +8,21 @@
     <% @tours.each do |tour| %>
     <%=link_to tour_path(tour.id), class: "tour-link" do%>
       <div class="tour">
-        <div class="title tour-info"><%= tour.title %></div>
-        <div class="agent-logo tour-info">
+        <div class="item title tour-info">
+          <p> <%= tour.title %></p>
+        </div>
+        <div class="item agent-logo tour-info">
         <%if tour.image_url%>
           <%= image_tag tour.image_url, class: "a-logo"%>
         <%end%>
         </div>
-        <div class="headline tour-info"><%= tour.description %></div>
+        <div class="item headline tour-info"><%= tour.description %></div>
 
-        <div class="contact tour-info"><%=tour.user.profile.brand%></div>
-        <div class="dates tour-info"><%= tour.start_date.strftime("%-d/%-m/%y") %> to <%= tour.end_date.strftime("%-d/%-m/%y") %> </div>
-        <div class="price tour-info">$<%= tour.min_cost %> to
+        <div class="item contact tour-info"><%=tour.user.profile.brand%></div>
+        <div class="item dates tour-info"><%= tour.start_date.strftime("%-d/%-m/%y") %> to <%= tour.end_date.strftime("%-d/%-m/%y") %> </div>
+        <div class="item price tour-info">$<%= tour.min_cost %> to
             $<%= tour.max_cost %></div>
-        <div class="space tour-info">
+        <div class="item space tour-info">
           <!-- ===================week======================== -->
                 <div class="week">
                   <div class="week-title">

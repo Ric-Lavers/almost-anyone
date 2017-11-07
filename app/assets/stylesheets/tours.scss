@@ -65,12 +65,16 @@ body{
       width: 100%;
     }
     .show-title{
+      text-align: center;
+      padding-top: 8px;
       grid-area: title;
     }
     .agent-brand{
+      text-align: center;
       grid-area: brand;
     }
     .show-agent-logo{
+      background-color: transparent;
       grid-area: agent_logo;
       .show-agent-logo-img{
         width: 100%;height: 100%;
@@ -100,36 +104,35 @@ body{
       grid-area: bio;
     }
     .order-render{
-      background-color: grey;
+      background-color: red !important;
       color: white;
       grid-area: book;
     }
     .show-make-offer{
       grid-area: make_offer;
       display: flex;
+      text-align: center;
       align-items:center;
       justify-content:center;
-      button{
-        // color: white !important;
       border:1px solid white;
-      border-radius: 6px;}
+      cursor: pointer;
+    //   button{
+    //     // color: white !important;
+    //   border:1px solid white;
+    //   border-radius: 6px;}
     }
-    .order-render{
-      color:white !important;
-      background-color: white !important;
-    }
-
-
+    .show-make-offer:hover{
+      border:1px solid white;
+    //   border-radius: 6px;
   }
-
-
-
 }
-
-
-
+}
+.order-render{
+  p{color:#1C1E23 ;}
+  background-color: #FFFCF7 ;
+}
 .rics-little-div{
-  background-color: white;
+  background-color: #FFFCF7;
   .field{
     color:#1C1E23;
     select{
@@ -138,7 +141,11 @@ body{
   }
   input{border: 1px solid #ccc;}
 }
-
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content:space-around;
+}
 
 .tour-link{
   cursor: pointer;
@@ -170,11 +177,12 @@ body{
 
 }
 .title{
+  padding-top: 8px;
   grid-area: title;
-  font-size: 0.8em;
+  // font-size: 0.8em;
   text-align: center;
   font-weight: 400;
-  text-shadow: -2px 2px white;
+  // text-shadow: -2px 2px white;
   width: auto;
   margin-left: 0;
   padding: 6px 12px;
@@ -224,9 +232,18 @@ body{
 }
 
 
-table tr{
-  background-color: #FFFCF7;
+// table tr{
+//   background-color: #FFFCF7;
+// }
+.item{
+  background: rgba(0,0,0,0.5);
+  width: 100%;
 }
+.agent-logo{
+  background-color: transparent ;
+}
+
+// CALENDAR
 $dayWidth:26px;
 .cal-title{
   text-align: center;
