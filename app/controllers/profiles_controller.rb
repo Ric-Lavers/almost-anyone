@@ -32,6 +32,9 @@ class ProfilesController < ApplicationController
     temp_genres.each{|genre_id|
       @profile.genres << Genre.find(genre_id) unless genre_id.blank?
     }
+    puts "=" * 20
+    puts "#{params}".green
+    puts "=" * 20
 
     respond_to do |format|
       if @profile.save

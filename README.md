@@ -81,7 +81,23 @@ temp_genres.each{|genre_id|
 }
 ```
 
+Make the rating model
+```
+ rails g model Rating profile:references user:references score:integer
+```
+in ```db/migrate/<the new migration> ``` add default to 0 to score ```t.integer :score, default: 0```
 
+```
+<!-- below is a way to get a searchable dropdown menu-->
+      <!-- <div class="field">
+        <input type=text list=browsers name="genre">
+          <datalist id=browsers >
+            <%Genre.all.each do |g|%>
+             <option> <%=g.name%>
+            <%end%>
+          </datalist>
+      </div> -->
+```
 
 
 
@@ -128,11 +144,8 @@ Give an example
 Explain what these tests test and why
 
 ```
-Give an example
 ```
 
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
-## CHECK OUT THIS FOR MORE TIPS
-* [Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists) -This is intended as a quick reference and showcase.

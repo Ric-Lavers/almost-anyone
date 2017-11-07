@@ -2,46 +2,66 @@
 
 <h1>Tours</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>email</th>
-      <th>User</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Country</th>
-      <th>Image data</th>
-      <th>Bio</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Min cost</th>
-      <th>Max cost</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+
 
   <tbody>
     <% @tours.each do |tour| %>
-      <tr>
-        <td><%= tour.user.email %></td>
-        <td><%= tour.user.profile.brand %></td>
-        <td><%= tour.title %></td>
-        <td><%= tour.description %></td>
-        <td><%= tour.country %></td>
-        <td> <img src="<%= tour.image_url %>" alt="" height="10"> </td>
-        <td><%= tour.bio %></td>
-        <td><%= tour.start_date %></td>
-        <td><%= tour.end_date %></td>
-        <td><%= tour.min_cost %></td>
-        <td><%= tour.max_cost %></td>
-        <td><%= link_to 'Show', tour %></td>
-        <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
-        <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <%=link_to tour_path(tour.id), class: "tour-link" do%>
+      <div class="tour">
+        <div class="title tour-info"><%= tour.title %></div>
+        <div class="agent-logo tour-info">
+        <%= image_tag tour.image_url, class: "a-logo"%>
+        </div>
+        <div class="headline tour-info"><%= tour.description %></div>
+        <div class="contact tour-info">contact</div>
+        <div class="dates tour-info"><%= tour.start_date.strftime("%x") %> to <%= tour.end_date.strftime("%x") %> </div>
+        <div class="price tour-info">$<%= tour.min_cost %> to
+            $<%= tour.max_cost %></div>
+        <div class="space tour-info">
+          <!-- ===================week======================== -->
+                <div class="week">
+                  <div class="week-title">
+                    <%if tour.start_date.strftime("%B")==tour.end_date.strftime("%B")%>
+                      <%= tour.start_date.strftime("%B") %> <%= tour.start_date.strftime("%Y") %>
+                    <%else%>
+                      <%= tour.start_date.strftime("%b") %>  to   <%= tour.end_date.strftime("%b") %> <%= tour.end_date.strftime("%Y") %>
+                    <%end%>
+                  </div>
+
+                  <div class="heading sTot">Sun to Thu</div>
+                  <div class="heading">Fri</div>
+                  <div class="heading">Sat</div>
+
+                  <%cal =  @cal.new(tour.start_date, tour.end_date)%>
+                  <%cal.createCalendar%>
+                  <%cal.bookDays(
+                  DateTime.new(2018, 2, 21),DateTime.new(2018, 3, 9),DateTime.new(2018, 3, 10))%>
+
+                  <%#cal.displayCalendar.html_safe%>
+
+                  <%=cal.displayWeek.html_safe%>
+                  </div>
+
+          <!-- ===================week======================== -->
+        </div>
+      </div>
+    <%end%>
+
+    <div class="development">
+      <%= link_to 'Show', tour %></td>
+      <td><%= link_to 'Edit', edit_tour_path(tour) %></td>
+      <td><%= link_to 'Destroy', tour, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+
+
+
+
+
+
+
+
+
     <% end %>
-  </tbody>
-</table>
 
 <br>
-
 <%= link_to 'New Tour', new_tour_path %>

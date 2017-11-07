@@ -33,15 +33,21 @@
     <%= form.label :bio %>
     <%= form.text_area :bio, id: :tour_bio %>
   </div>
+<script >
+$(function() {
+  $('.datepicker').datepicker();
+});
+</script>
+
 
   <div class="field">
     <%= form.label :start_date %>
-    <%= form.datetime_select :start_date, id: :tour_start_date %>
+    <%= form.date_select :start_date, id: :tour_start_date %>
   </div>
 
   <div class="field">
     <%= form.label :end_date %>
-    <%= form.datetime_select :end_date, id: :tour_end_date %>
+    <%= form.date_select :end_date, id: :tour_end_date%>
   </div>
 
   <div class="field">

@@ -5,11 +5,13 @@ class ToursController < ApplicationController
   # GET /tours.json
   def index
     @tours = Tour.all
+    @cal = Calendar
   end
 
   # GET /tours/1
   # GET /tours/1.json
   def show
+    @cal = Calendar
   end
 
   # GET /tours/new
