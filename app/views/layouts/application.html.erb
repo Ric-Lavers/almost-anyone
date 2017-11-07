@@ -18,23 +18,17 @@
 <%puts "#{}".green%>
     <div class="dropdown">
     <%= image_tag "Hamburger_icon.png", class: "hamburger"%>
-      <div class="drop"><p>
-        <% if @current_user != nil %>
-           <%=@current_user.email.split("@")[0][0..16]%>
-        <% end %>
-       </p>
-      </div>
-
       <% if user_signed_in? %>
 
         <div class="dropdown-content">
         <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
         <%unless params[:controller] == "profiles" && params[:action] == "new"%>
-        <%puts "#{params[:controller]}      #{params[:action]}".green%>
           <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
         <%end%>
-        <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
-        <%=link_to 'Plans', charges_path, class: "login_out"%>
+
+        <p><%=link_to 'Password', edit_user_registration_path, class: "login_out"%></p>
+        <p><%=link_to 'Plans', charges_path, class: "login_out"%></p>
+        <p><%=link_to 'Offers', offers_path, class: "login_out"%></p>
         </div>
       <% else %>
         <div class="dropdown-content">
@@ -57,7 +51,9 @@
     <div class="">
       <% if user_signed_in? %>
           <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-          <%=current_user.email%>
+          <h6>   <% if current_user != nil %>
+               <%=current_user.email.split("@")[0][0..16]%>
+            <% end %></h6>
 
       <% else %>
           <div>

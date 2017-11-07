@@ -15,7 +15,7 @@
         <%end%>
         </div>
         <div class="headline tour-info"><%= tour.description %></div>
-        <div class="contact tour-info">contact</div>
+        <div class="contact tour-info"><%=tour.user.profile.brand%></div>
         <div class="dates tour-info"><%= tour.start_date.strftime("%-d/%-m/%y") %> to <%= tour.end_date.strftime("%-d/%-m/%y") %> </div>
         <div class="price tour-info">$<%= tour.min_cost %> to
             $<%= tour.max_cost %></div>

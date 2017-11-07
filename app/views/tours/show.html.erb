@@ -71,11 +71,12 @@
     <%end%>
   </p>
 </div>
-
-<h2> Submit an offer </h2>
-<div class="offer-form">
-  <%= render 'offer_form', tour_id: @tour.id, offer: @offer %>
-</div>
+<%if @tour.user_id != current_user.id%>
+  <h2> Submit an offer </h2>
+  <div class="offer-form">
+    <%= render 'offer_form', tour_id: @tour.id, offer: @offer %>
+  </div>
+<%end%>
 
 <%= link_to 'Edit', edit_tour_path(@tour) %> |
 <%= link_to 'Back', tours_path %>

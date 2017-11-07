@@ -4,9 +4,8 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-
-    #@myOffers = Offer.where(tour_id: current_user.id)
-    @offers = Offer.where(user_id: current_user.id)
+    @tours      = Tour.where(user_id: current_user.id)
+    @offers     = Offer.where(user_id: current_user.id)
   end
 
   # GET /offers/1
