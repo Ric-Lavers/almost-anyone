@@ -122,8 +122,44 @@ ratyrate gem
 
 in ```db/migrate/<the new migration> ``` add default to 0 to score ```t.integer :score, default: 0```
 
-Follow the guide on ratyrate.. add ```gem 'jquery-rails', '~> 4.3', '>= 4.3.1'```
-then it kina just works..
+Follow the guide on ratyrate..
+The gem is optimised for rails 4 which creates some Bugs
+Firstly, rails 5 doesnt have jQuery pre-installed.
+```
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+```
+Secondly, add [5.1] after the migrations names. . .
+Thirdly, the images might be in a weird spot.
+
+Then it kinda just works..
+
+### impressionist
+
+```
+rails g impressionist
+```
+then add [5.1] after ActiveRecords
+```
+ rails db:migrate
+```
+add to desired controller (Tours in this case), and indicate the action(or leave off for whole controller).
+```ruby
+class ToursController < ApplicationController
+impressionist :actions=>[:show]
+end
+```
+make the model impressionable
+```ruby
+class Tour < ApplicationRecord
+is_impressionable
+end
+```
+Now the impressions can be counted by
+```ruby
+@tour.impressionist_count
+```
+Easy a that and it worked first time.
+
 
 
 ### forms

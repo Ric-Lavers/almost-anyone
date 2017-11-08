@@ -23,6 +23,11 @@
           <%=link_to offers_path, class: "offers item" do%>
             <div>
               <p> <%=@offers.count%> <br> Offers</p>
+              <br>
+              <p>Highest offer <br> $<%= @max %></p>
+            </div>
+            <div >
+              <p>   <%=@impressions%> <br> views</p>
             </div>
           <%end%>
         <%end%>
