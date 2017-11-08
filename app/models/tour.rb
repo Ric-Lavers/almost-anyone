@@ -3,7 +3,7 @@ class Tour < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :bookings
-
+  is_impressionable
   validate :start_date_cannot_be_in_the_past, :headline_length
 
  def start_date_cannot_be_in_the_past
