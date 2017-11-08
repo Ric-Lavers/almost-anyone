@@ -13,9 +13,9 @@
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="pk_test_gKEkKvh4AIzPag1eZkCqoCDH"
-        data-amount="999"
-        data-name="geee Site"
-        data-description="Widget"
+        data-amount="<%=plan[1]*100%>"
+        data-name="<%=plan[0]%> plan"
+        data-description="Monthly subscription plans"
         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
         data-locale="auto"
         data-zip-code="true"

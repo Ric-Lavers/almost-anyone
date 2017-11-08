@@ -9,6 +9,9 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
+    puts "*"*20
+    puts "#{params}".green
+    puts "*"*20
     @amount = 500
 
     customer = Stripe::Customer.create(
