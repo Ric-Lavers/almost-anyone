@@ -1,7 +1,5 @@
 <h1>Payment</h1>
 
-
-
 <%@plans.each do |plan|%>
 <div class="payment-option">
   <h3 class="plan"><%=plan[0]%></h3>
@@ -9,11 +7,11 @@
     <div class="cost">
       <p>$<%=plan[1]%>/ month</p>
     </div>
-    <form action="/tours" method="GET">
+    <%= form_tag charges_url(plan[1]) do%>
       <script
         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_gKEkKvh4AIzPag1eZkCqoCDH"
-        data-amount="<%=plan[1]*100%>"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-amount="<%=plan[1]*100%> "
         data-name="<%=plan[0]%> plan"
         data-description="Monthly subscription plans"
         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
@@ -21,8 +19,7 @@
         data-zip-code="true"
         data-currency="aud">
       </script>
-    </form>
+    <%end%>
   </div>
-
 </div>
 <%end%>
