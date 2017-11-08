@@ -3,8 +3,11 @@
     <%= image_tag "Hamburger_icon.png", class: "hamburger"%>
     <div class="dropdown-content">
       <% if user_signed_in? %>
-
         <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
+        <!-- <h6 class="person">
+        <%#if @current_user != nil%>
+
+        <%#end %></h6> -->
         <%unless params[:controller] == "profiles" && params[:action] == "new"%>
           <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
         <%end%>
@@ -20,22 +23,18 @@
       </div>
     </div>
 
-
-
-
-
-    <!-- <div class="">
-      <h3>MENU</h3>
-      <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
-    </div> -->
     <%=link_to root_path, class: "logo" do %>
       <%=image_tag "almost-anyone.png", class: "logo"%>
     <%end%>
-    <div class="">
+
+
+
+    <div class="right">
       <% if user_signed_in? %>
           <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-          <h6>   <% if current_user != nil %>
-               <%=current_user.email.split("@")[0][0..16]%>
+
+          <h6 class="person">   <% if current_user != nil %>
+               <%=current_user.profile.brand[0..16]%>
             <% end %></h6>
 
       <% else %>
@@ -44,5 +43,4 @@
           </div>
       <% end %>
     </div>
-
   </nav>

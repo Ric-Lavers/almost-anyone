@@ -15,16 +15,25 @@
       <h6>  <%= @tour.user.profile.brand %> </h6>
       </div>
 
-      <div class="offers item">
-        <%if @tour.user_id != current_user.id%>
 
+        <%if @tour.user_id != current_user.id%>
+          <div class="offers item">
+          </div>
         <%elsif @tour.user_id == current_user.id%>
-          <p> <%=@offers.count%> <br> Offers</p>
+          <%=link_to offers_path, class: "offers item" do%>
+            <div>
+              <p> <%=@offers.count%> <br> Offers</p>
+            </div>
+          <%end%>
         <%end%>
-      </div>
+
       <a class="show-make-offer item" href="#offer-form">
         <div >
-          <h5>Make a Offer</h5>
+          <%if @tour.user_id != current_user.id%>
+            <h5>Make a Offer</h5>
+          <%else%>
+            <h3>Book Dates</h3>
+          <%end%>
         </div>
       </a>
       <div class="show-headline item">

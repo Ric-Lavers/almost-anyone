@@ -31,11 +31,11 @@ class BookingsController < ApplicationController
         format.html { redirect_to tour_url(@booking.tour_id), notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
-        format.html { render :new }
+        format.html { redirect_to tour_url(@booking.tour_id), notice: 'Booking was not successful' }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
-    redirect_to tour_url(@booking.tour_id)
+    # redirect_to tour_url(@booking.tour_id)
   end
 
   # PATCH/PUT /bookings/1

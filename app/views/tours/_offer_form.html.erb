@@ -3,7 +3,6 @@
   <% if offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
-
       <ul>
       <% offer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -18,7 +17,7 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_select :date, id: :offer_date %>
+    <%= form.date_select :date, start_year:  @tour.start_date.year,end_year:  @tour.start_date.year, id: :offer_date %>
   </div>
 
   <div class="field">

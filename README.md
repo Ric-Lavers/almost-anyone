@@ -101,8 +101,6 @@ The custom calendar model uses a number of methods to display the Tour date rang
 Add Stripe
 
 [stripe guide](https://stripe.com/docs/checkout/rails)
-
-
 ]
 *to be continued*
 
@@ -124,6 +122,11 @@ ratyrate gem
 
 in ```db/migrate/<the new migration> ``` add default to 0 to score ```t.integer :score, default: 0```
 
+Follow the guide on ratyrate.. add ```gem 'jquery-rails', '~> 4.3', '>= 4.3.1'```
+then it kina just works..
+
+
+### forms
 ```
 <!-- below is a way to get a searchable dropdown menu-->
       <!-- <div class="field">

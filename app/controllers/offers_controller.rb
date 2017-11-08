@@ -4,8 +4,12 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-    @tours      = Tour.where(user_id: current_user.id)
-    @offers     = Offer.where(user_id: current_user.id)
+    @offers = []
+    @tours = Tour.where(user_id: current_user)
+    @tours.each{|tour|
+      @offers << Offer.where(tour_id: tour.id)
+    }
+    @madeOffers = Offer.where(user_id: current_user.id)
 
   end
 
@@ -30,7 +34,7 @@ class OffersController < ApplicationController
     @offer.user_id = current_user.id if current_user
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to tour_url(@booking.tour_id), notice: 'Offer was successfully created.' }
+        format.html { redirect_to tour_url(@offer.tour_id), notice: 'Offer was successfully created.' }
         format.json { render :show, status: :created, location: @offer }
       else
         puts "#{params}".red

@@ -20,7 +20,7 @@ gem 'jquery-ui-rails'
 gem 'stripe'
 gem 'ratyrate'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-# gem 'impressionist'
+gem 'impressionist'
 # gem 'scoped_search'
 # gem 'mailgun-ruby'
 # gem "discogs-wrapper"

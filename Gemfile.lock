@@ -116,6 +116,8 @@ GEM
     http_parser.rb (0.6.0)
     i18n (0.9.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.0)
+      nokogiri (~> 1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -274,6 +276,7 @@ DEPENDENCIES
   colorize
   devise
   guard-livereload (~> 2.5)
+  impressionist
   jbuilder (~> 2.5)
   jquery-rails (~> 4.3, >= 4.3.1)
   jquery-ui-rails
