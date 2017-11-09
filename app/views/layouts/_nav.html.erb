@@ -4,7 +4,7 @@
     <div class="dropdown-content">
       <% if user_signed_in? %>
         <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
-        <%unless params[:controller] == "profiles" && params[:action] == "new" || current_user.profile != nil%>
+        <%unless params[:controller] == "profiles" && params[:action] == "new" || current_user.profile == nil%>
           <%= button_to('My Profile',profile_path(current_user.profile.id),method: :get ,form_class: "login_out")%>
         <%end%>
           <p><%=link_to 'Password', edit_user_registration_path, class: "login_out"%></p>

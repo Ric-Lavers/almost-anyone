@@ -37,7 +37,7 @@
       <%= offer.user.email %>
     </div>
     <div class="item offer-date right-fade">
-      <%= offer.date %>
+      <span style="color:orange"> <%= offer.date %> </span>
     </div>
 
     <!--start calendar  -->
@@ -63,6 +63,7 @@
             <%@list << i.date%>
             <%}%>
         <%cal.bookDays(@list)%>
+        <%cal.offerDay(offer.date)%>
         <%# puts "#{cal.cal}".green%>
         <%=cal.displayCalendar.html_safe%>
     </div>
@@ -85,12 +86,14 @@
         $<%= @max %>
       <%end%>
       </span>
+      <br>
+      Average offer $<%=@avg%>
         <!-- <br> $<%#= offer.tour.min_cost%> to $<%#= offer.tour.max_cost%> -->
       <br><span style="color:red">
-      <%=@offers.count%></span> day booked
+      <%=@list.count%></span> day booked
       <br>
       days remaining <span style="color:green">
-      <%=((offer.tour.end_date.to_date - offer.tour.start_date.to_date).to_i)+1 - @offers.count%></span></p>
+      <%=((offer.tour.end_date.to_date - offer.tour.start_date.to_date).to_i)+1 - @list.count%></span></p>
     </div>
     <div class="item offer-message">
   message

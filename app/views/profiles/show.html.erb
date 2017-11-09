@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="profile">
-  <div class="part edit"><%= link_to 'Edit', edit_profile_path(@profile) %></div>
-  <div class="part pro-logo"><img class="profile-img" src="<%= @profile.image_url %>" alt=""></div>
-  <div class="part brand"><%=@profile.brand%></div>
+  
+  <div class="part pro-logo "><img class="profile-img right-fade" src="<%= @profile.image_url %>" alt=""></div>
+  <div class="part brand "><%=@profile.brand%></div>
   <div class="part stars"><h1> <%= rating_for current_user, 'rating' %> </h1></div>
-  <div class="part genre">
+  <div class="part genre right-fade-x5">
   <h6>
       <% @profile.genres.each_with_index{|i, index|%>
       <%if index == @profile.genres.size - 1%>
@@ -16,10 +16,10 @@
       <%}%>
   </h6>
   </div>
-  <div class="part location">Looking for gigs in <strong><%= @profile.location%></strong> </div>
-  <div class="part links"><a href="suddenmovesevents.com.au">suddenmovesevents.com.au</a></div>
-  <div class=" left part bio"> <p class="left white"> <%=@profile.bio%></p></div>
-  <div class=" left part gigs"> <p class="left white">
+  <div class="part location right-fade-x5">Looking for gigs in <strong><%= @profile.location%></strong> </div>
+  <div class="part links right-fade-x5"><a href="suddenmovesevents.com.au">suddenmovesevents.com.au</a></div>
+  <div class=" left part bio right-fade-x5"> <p class="left white"> <%=@profile.bio%></p></div>
+  <div class=" left part gigs right-fade-x5"> <p class="left white">
     <h6>Previous Gigs</h6>
  </p> <a href="#">Timmy trumpet</a> <br>
   <a href="#">Dj Slime</a> </div>

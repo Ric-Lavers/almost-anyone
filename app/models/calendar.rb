@@ -33,7 +33,7 @@ class Calendar
   def bookDays(bookedDays)
     puts "#{bookedDays[0].class}".green
 
-    # bookedDays= bookedDays[0] if 
+    # bookedDays= bookedDays[0] if
 
     if bookedDays
       dates = @cal
@@ -49,6 +49,22 @@ class Calendar
 
   end
 
+#for indivdual offer days
+  def offerDay(offerDay)
+    puts "#{offerDay.class}".green
+
+    if offerDay
+      dates = @cal
+      dates.each{|d|
+        if d[1] == offerDay
+          d[2] = 2
+        end
+      }
+    end
+    @cal = dates
+
+  end
+
   def displayCalendar
     divs = ""
     (@cal).each{|i|
@@ -56,6 +72,8 @@ class Calendar
         divs +=   "<div class='" + "day'" +  "> <p> #{i[1].strftime('%-d')} </p></div>"
       elsif i[2] == false
         divs +=   "<div class='" + "bookedDay'" +  "> <p> #{i[1].strftime('%-d')} </p></div>"
+      elsif i[2] == 2
+        divs +=   "<div class='" + "yellow'" +  "> <p> #{i[1].strftime('%-d')} </p></div>"
       else
         divs +=   "<div class='" + "#{i[0]}'" +  "> </div>"
       end

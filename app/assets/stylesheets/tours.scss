@@ -20,6 +20,8 @@ $headings: #E2C08D;
 }
 body{
   background-color: $b-c;
+  background-color: #282828;
+  // background-image:url("background.png")
 }
 .tour-form{
   color:#FFFCF7;
@@ -173,7 +175,7 @@ body{
   display: grid;
   width: 100%;
   // border: 2px solid green;
-  background-color: $b-c;
+  // background-color: $b-c;
   grid-template-columns:  repeat(5,20%);
   grid-template-rows:repeat(5,36px);
   grid-gap: 1px;

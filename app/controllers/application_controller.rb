@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       }
       temp.sort.last
     else
-      [0]
+      "none"
     end
   end
   def find_max_index(offers)
@@ -32,7 +32,21 @@ class ApplicationController < ActionController::Base
       }
       temp.sort
     else
-      [0]
+      'none'
     end
   end
+  #thats a array and find the average from offers
+  def find_avg(offers)
+    if offers.count != 0
+      temp =[]
+       offers[0].each{|i|
+        temp << i.price
+      }
+      temp.sum.to_f/temp.count
+    else
+      "unknown"
+    end
+
+  end
+
 end

@@ -21,6 +21,17 @@
  //   color:#E2C08D;
  // }
  $sub-H:#E0DCD2;
+$b-c: #282C34;
+
+.container{
+   background-color: $b-c;
+   background-color: #282828;
+   background:linear-gradient(0deg,
+   rgba(#282828, 1) 10%, rgba($b-c,1) 50%) !important;
+   background-attachment: fixed;
+   background-repeat: repeat-x;
+   // background-image:url("background.png")
+ }
 .actions{
   color:white;
 }

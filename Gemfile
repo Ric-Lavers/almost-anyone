@@ -8,7 +8,7 @@ end
 #my additions
 gem 'devise'
 gem 'shrine'
-gem "aws-sdk-s3", "~> 1.2"
+# gem "aws-sdk-s3", "~> 1.2"
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'dotenv-rails'

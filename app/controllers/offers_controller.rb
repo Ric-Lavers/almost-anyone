@@ -11,12 +11,13 @@ class OffersController < ApplicationController
       @offers << Offer.where(tour_id: tour.id)
       @bookings << Booking.where(tour_id: tour.id)
     }
-    @cal = Calendar
+    @cal  = Calendar
     @max  = find_max_index(@offers).last
     @min  = find_max_index(@offers).first
+    @avg  = find_avg(@offers).to_i
 
     @madeOffers = Offer.where(user_id: current_user.id)
-    
+
 
 
 

@@ -66,8 +66,10 @@
       <%@theOffer.each{|i|array << i.price;puts i.price}%>
     <%if array.sort.last == offer.price %>
       You have highest offer.
+    <%elsif array.sum.to_f/array.count > offer.price%>
+      your offer is below average offer
     <%else%>
-      your are below average offer
+      your offer is above average offer
     <%end%>
       </span>
       <br>
