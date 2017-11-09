@@ -33,7 +33,7 @@
       <% if user_signed_in? %>
           <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
 
-          <h6 class="person">   <% if current_user != nil %>
+          <h6 class="person">   <% if current_user.profile != nil %>
                <%=current_user.profile.brand[0..16]%>
             <% end %></h6>
 

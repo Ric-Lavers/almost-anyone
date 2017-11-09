@@ -263,7 +263,7 @@ heroku apps
 
 heroku run rails c --app name
 
-heroku og:psql --app name
+heroku pg:psql --app almost-anyone
 
 heroku run bash
 
