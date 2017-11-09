@@ -1,28 +1,28 @@
   <div class="show-tour">
-    <div class="show-image">
+    <div class="show-image right-fade">
       <img class="show-img" src=" <%= @tour.image_url %>" alt="">
     </div>
 
     <div class="the-tour">
 
-      <div class="show-title item">
-        <%= @tour.title.capitalize %>
+      <div class="show-title item ">
+        <strong><%= @tour.title.capitalize %>
+        </strong>
       </div>
       <div class="show-agent-logo item">
         <%if @tour.user.profile.image_url != nil%>
           <%= image_tag @tour.user.profile.image_url, class: "show-agent-logo-img item"%>
         <%end%>
       </div>
-      <div class="agent-brand item">
+      <div class="agent-brand item right-fade">
       <h6>  <%= @tour.user.profile.brand %> </h6>
       </div>
 
-
         <%if @tour.user_id != current_user.id%>
-          <div class="offers item">
+          <div class="offers item right-fade">
           </div>
         <%elsif @tour.user_id == current_user.id%>
-          <%=link_to offers_path, class: "offers item" do%>
+          <%=link_to offers_path, class: "offers item right-fade" do%>
             <div>
               <p> <%=@offers.count%> <br> Offers</p>
               <br>
@@ -39,7 +39,7 @@
         <%end%>
 
       <a class="show-make-offer item" href="#offer-form">
-        <div >
+        <div class="">
           <%if @tour.user_id != current_user.id%>
             <h5>Make a Offer</h5>
           <%else%>
@@ -62,7 +62,7 @@
         <h5>
         $ <%= @tour.min_cost %> to $ <%= @tour.max_cost %></h5>
       </div>
-      <div class="bio item">
+      <div class="bio item right-fade-x5">
         <%= @tour.bio %>
       </div>
 
@@ -104,7 +104,7 @@
 
     </div>
   </div><!-- the-tour -->
-<div class="footer">
+<div class="footer fade-right-x5">
   <%= link_to 'Edit Bookings', bookings_path %>
   <%= link_to 'Edit Tour', edit_tour_path(@tour) %>
       <%end%>

@@ -5,11 +5,18 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     @offers = []
+    @bookings =[]
     @tours = Tour.where(user_id: current_user)
     @tours.each{|tour|
       @offers << Offer.where(tour_id: tour.id)
+      @bookings << Booking.where(tour_id: tour.id)
     }
     @madeOffers = Offer.where(user_id: current_user.id)
+    @max  = find_max_index(@offers).last
+    @min  = find_max_index(@offers).first
+
+
+    # @impressions = @tour.impressionist_count
 
   end
 

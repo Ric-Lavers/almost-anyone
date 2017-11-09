@@ -24,13 +24,7 @@ class ToursController < ApplicationController
     @days =((@tour.end_date.to_date - @tour.start_date.to_date).to_i)+1
     @impressions = @tour.impressionist_count
 
-    def find_max(offers)
-      temp =[]
-       offers.each{|i|
-        temp << i.price
-      }
-      temp.sort.last
-    end
+    
     @max  = find_max(@offers)
     @h_offer = @offers
   end

@@ -12,4 +12,19 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def find_max(offers)
+    temp =[]
+     offers.each{|i|
+      temp << i.price
+    }
+    temp.sort.last
+  end
+  def find_max_index(offers)
+    temp =[]
+     offers[0].each{|i|
+      temp << i.price
+    }
+    temp.sort
+  end
 end

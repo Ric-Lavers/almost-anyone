@@ -136,3 +136,11 @@ input, textarea, select, button, a{
 .white{
   color:#FFFCF6;
 }
+.right-fade{
+  background:linear-gradient(90deg,
+  rgba(0, 0, 0, 0.5) 75%, rgba(255,255,255,0.5) 98%) !important;
+}
+.right-fade-x5{
+  background:linear-gradient(90deg,
+  rgba(0, 0, 0, 0.5) 93%, rgba(255,255,255,0.5) 100%) !important;
+}
