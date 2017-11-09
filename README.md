@@ -30,6 +30,8 @@ ___
 
 [discogs-wrapper](https://github.com/buntine/discogs)
 
+[cloudinary](https://cloudinary.com//documentation/rails_integration)
+
 ## Elements
 
 
@@ -159,6 +161,14 @@ Now the impressions can be counted by
 @tour.impressionist_count
 ```
 Easy a that and it worked first time.
+
+### Cloudinary
+
+Before posting on Heroku i need cloud storage for my tour and profile images. And it need to integrate with shrine. [shrine-cloudinary guide](https://github.com/janko-m/shrine-cloudinary)
+```
+gem "clourinary"
+gem 'shrine-cloudinary'
+```
 
 
 

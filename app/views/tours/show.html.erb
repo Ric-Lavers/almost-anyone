@@ -9,7 +9,9 @@
         <%= @tour.title.capitalize %>
       </div>
       <div class="show-agent-logo item">
-        <%= image_tag @tour.user.profile.image_url, class: "show-agent-logo-img item"%>
+        <%if @tour.user.profile.image_url != nil%>
+          <%= image_tag @tour.user.profile.image_url, class: "show-agent-logo-img item"%>
+        <%end%>
       </div>
       <div class="agent-brand item">
       <h6>  <%= @tour.user.profile.brand %> </h6>

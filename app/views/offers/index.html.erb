@@ -27,7 +27,9 @@
           <td><%= offer.tour.title %></td>
           <td> <h6><%= offer.user.email %></h6></td>
           <td><%= offer.user.first_name %> <%= offer.user.last_name %></td>
-          <td><%=offer.user.profile.brand%></td>
+          <td style="min-width:120px;"><%=offer.user.profile.brand%> <br>
+            <h5> <%= rating_for offer.user, 'rating' %> </h5>
+          </td>
           <td><%=offer.user.profile.phone_number%></td>
           <td><%= offer.date %></td>
           <td>$<%= offer.price %></td>

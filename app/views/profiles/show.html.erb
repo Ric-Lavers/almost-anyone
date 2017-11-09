@@ -3,22 +3,25 @@
 <div class="profile">
   <div class="part edit"><%= link_to 'Edit', edit_profile_path(@profile) %></div>
   <div class="part pro-logo"><img class="profile-img" src="<%= @profile.image_url %>" alt=""></div>
-  <div class="part msg"><%=@profile.brand%></div>
+  <div class="part brand"><%=@profile.brand%></div>
   <div class="part stars"><h1> <%= rating_for current_user, 'rating' %> </h1></div>
   <div class="part genre">
-    <% @profile.genres.each_with_index{|i, index|%>
+  <h6>
+      <% @profile.genres.each_with_index{|i, index|%>
       <%if index == @profile.genres.size - 1%>
         <%=i.name%>
       <%else%>
         <%=i.name%>,
       <%end%>
       <%}%>
+  </h6>
   </div>
   <div class="part location">Looking for gigs in <strong><%= @profile.location%></strong> </div>
   <div class="part links"><a href="suddenmovesevents.com.au">suddenmovesevents.com.au</a></div>
-  <div class=" left part bio"> <p class="left white"> bio </p> <%=@profile.bio%></div>
+  <div class=" left part bio"> <p class="left white"> <%=@profile.bio%></p></div>
   <div class=" left part gigs"> <p class="left white">
-Previous Gigs </p> <a href="#">Timmy trumpet</a> <br>
+    <h6>Previous Gigs</h6>
+ </p> <a href="#">Timmy trumpet</a> <br>
   <a href="#">Dj Slime</a> </div>
 
 </div>

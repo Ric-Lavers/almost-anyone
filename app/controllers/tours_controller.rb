@@ -7,6 +7,7 @@ class ToursController < ApplicationController
   def index
     @tours = Tour.all
     @cal = Calendar
+    puts "hello #{params}"
   end
 
   # GET /tours/1

@@ -15,12 +15,15 @@ end
 group :development do
   gem 'guard-livereload', '~> 2.5', require: false
 end
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'colorize'
 gem 'jquery-ui-rails'
 gem 'stripe'
 gem 'ratyrate'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'impressionist'
+gem 'cloudinary'
+gem 'shrine-cloudinary'
 # gem 'scoped_search'
 # gem 'mailgun-ruby'
 # gem "discogs-wrapper"
