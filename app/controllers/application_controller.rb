@@ -14,17 +14,25 @@ class ApplicationController < ActionController::Base
   end
 
   def find_max(offers)
-    temp =[]
-     offers.each{|i|
-      temp << i.price
-    }
-    temp.sort.last
+    if offers.count != 0
+      temp =[]
+       offers.each{|i|
+        temp << i.price
+      }
+      temp.sort.last
+    else
+      [0]
+    end
   end
   def find_max_index(offers)
-    temp =[]
-     offers[0].each{|i|
-      temp << i.price
-    }
-    temp.sort
+    if offers.count != 0
+      temp =[]
+       offers[0].each{|i|
+        temp << i.price
+      }
+      temp.sort
+    else
+      [0]
+    end
   end
 end
