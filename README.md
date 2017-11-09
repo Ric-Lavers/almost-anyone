@@ -234,6 +234,7 @@ However, validators are added to the Models preventing input dates outside of th
 
 Testing was a issue to due lack of time to learn Rspec.
 However when developing the Calendar model I tested constantly using a simple method of writing out the desired outcome and then check it against my actual outcome, if they were the same it passed true and i knew the my test had past.  
+Of the rSpec testing completed I ran into a number of problems for getting my tests past the validations that wrote. 
 
 ### Break down into end to end tests
 

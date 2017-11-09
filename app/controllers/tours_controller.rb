@@ -13,11 +13,15 @@ class ToursController < ApplicationController
   # GET /tours/1
   # GET /tours/1.json
   def show
+
+
+    @bookings = Booking.where(tour_id: params[:id])
     @offers = Offer.where(tour_id: params[:id])
     @offer = Offer.new
     @cal = Calendar
     @booking  = Booking.new
 
+    @days =((@tour.end_date.to_date - @tour.start_date.to_date).to_i)+1
     @impressions = @tour.impressionist_count
 
     def find_max(offers)

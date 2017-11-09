@@ -28,6 +28,10 @@
               <br>
               <p>Highest offer <br> $<%= @max %></p>
             </div>
+            <div>
+              <p>Bookings <span style="color:red" ><%=@bookings.count%> <br></span> available <span style="color:green" ><%=@days-(@bookings.count)%> </span> </p>
+            </div>
+
             <div >
               <p>   <%=@impressions%> <br> views</p>
             </div>
