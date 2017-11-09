@@ -169,10 +169,44 @@ Before posting on Heroku i need cloud storage for my tour and profile images. An
 gem "clourinary"
 gem 'shrine-cloudinary'
 ```
+Just change the shrine initializer and set up the .env file.
 
 
 
 ### forms
+
+ [Using Ajax](https://launchschool.com/blog/the-detailed-guide-on-how-ajax-works-with-ruby-on-rails)
+
+This will create a form that will got the new action of offer
+ ```
+<%= form_with url: new_offer_path, method: "get", remote: true%>
+ ```
+This tell rails to load the new.js.erb file when the new action is fired.
+
+```ruby
+def new
+  respond_to :js
+end
+```
+```js
+document.getElementById....render_form
+```
+```ruby
+def create
+  @task = Task.new(name: params[:name])
+  if @task.save
+    @tasks = Task.all
+    respond_to :js
+  end
+
+end
+```
+
+
+
+
+
+
 ```
 <!-- below is a way to get a searchable dropdown menu-->
       <!-- <div class="field">
@@ -197,24 +231,6 @@ However, validators are added to the Models preventing input dates outside of th
 
 
 
-### Installing
-
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
 ## Running the tests
 
 Testing was a issue to due lack of time to learn Rspec.
@@ -237,4 +253,41 @@ Explain what these tests test and why
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Useful commands
+
+```
+git remote -v
+
+heroku logs -t
+
+heroku apps
+
+heroku run rails c --app name
+
+heroku og:psql --app name
+
+heroku run bash
+
+heroku pg:backups --app name
+heroku pg:backups:capture --app name
+
+heroku run rake db:migrate:status --app name
+heroku run rake db:migrate:redo VERSION=<id from previous command> --app name
+```
+
+### Heroku
+
+* deployment must be uniquely name across the whole system
+* uses build packs to automatically deploy
+* having ruby version in your gem file is a good idea (not vital)
+* brew install Heroku (for the command line Heroku interface. )
+
+
+1. git remote add demo https://git.heroku.com/*name*.git
+1. git push demo master *(this will upload the delpoyment)*
+1. heroku logs -t --app *name*
+1. heroku run rake db:migrate --app name
+
+
+* pushing a branch to heroku ``` git push name branch:master ```
+* this may need use to *re-write history* ``` git push -f name branch:master ``` **THIS IS A TERRIBLE IDEA IN A TEAM ENV**... but individually its okay.
