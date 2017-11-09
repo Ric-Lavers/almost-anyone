@@ -20,8 +20,10 @@
   <div class="item offer-logo">
     <%= image_tag offer.user.profile.image_url, class:"offer-logo-img"%>
   </div>
-  <div class="item offer-price right-fade">
+  <div class="item offer-price right-fade" style="font-weight:bolder">
+    <span style="color:yellow">
     $<%= offer.price %>
+    </span>
   </div>
   <div class="item offer-number">
     <%=offer.user.profile.phone_number%>
@@ -35,9 +37,36 @@
   <div class="item offer-date right-fade">
     <%= offer.date %>
   </div>
-  <div class="item offer-cal">
-cal
+
+  <!--start calendar  -->
+<div class="item offer-cal" style="display:block">
+
+
+  <div class="cal">
+    <%@tour = Tour.find_by_id(offer.tour_id)%>
+    <%@tour.start_date%>
+      <div class="cal-title">
+        <%if @tour.start_date.strftime("%B")==@tour.end_date.strftime("%B")%>
+          <%= @tour.start_date.strftime("%B") %> <%= @tour.start_date.strftime("%Y") %>
+        <%else%>
+          <%= @tour.start_date.strftime("%B") %>  to   <%= @tour.end_date.strftime("%B") %> <%= @tour.end_date.strftime("%Y") %>
+        <%end%>
+      </div>
+      <div class="heading">Sun</div><div class="heading">Mon</div><div class="heading">Tue</div><div class="heading">Wed</div><div class="heading">Thu</div><div class="heading">Fri</div><div class="heading">Sat</div>
+      <%cal =  @cal.new(@tour.start_date, @tour.end_date)%>
+      <%cal.createCalendar%>
+      <%@list = []%>
+        <%temp = Booking.where(tour_id: @tour.id)%>
+        <%temp.each{|i|%>
+          <%@list << i.date%>
+          <%}%>
+      <%cal.bookDays(@list)%>
+      <%# puts "#{cal.cal}".green%>
+      <%=cal.displayCalendar.html_safe%>
   </div>
+</div>
+<!--end calendar  -->
+
   <div class="item offer-info right-fade">
     <p>Highest offer <span style="color:yellow">
     <%if @max == offer.price%>
@@ -54,7 +83,7 @@ cal
       $<%= @max %>
     <%end%>
     </span>
-      <br> $<%= offer.tour.min_cost%> to $<%= offer.tour.max_cost%>
+      <!-- <br> $<%#= offer.tour.min_cost%> to $<%#= offer.tour.max_cost%> -->
     <br><span style="color:red">
     <%=@offers.count%></span> day booked
     <br>

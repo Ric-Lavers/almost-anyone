@@ -79,8 +79,8 @@
               <%cal =  @cal.new(@tour.start_date, @tour.end_date)%>
               <%cal.createCalendar%>
               <%@list = []%>
-                <%temp = Booking.where(tour_id: @tour.id)%>
-                <%temp.each{|i|%>
+                <%@temp = Booking.where(tour_id: @tour.id)%>
+                <%@temp.each{|i|%>
                   <%@list << i.date%>
                   <%}%>
               <%cal.bookDays(@list)%>

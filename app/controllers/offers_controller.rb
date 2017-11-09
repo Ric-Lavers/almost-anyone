@@ -15,6 +15,8 @@ class OffersController < ApplicationController
     @max  = find_max_index(@offers).last
     @min  = find_max_index(@offers).first
 
+    @cal = Calendar
+
 
     # @impressions = @tour.impressionist_count
 
