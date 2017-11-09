@@ -290,3 +290,5 @@ heroku run rake db:migrate:redo VERSION=<id from previous command> --app name
 
 * pushing a branch to heroku ``` git push name branch:master ```
 * this may need use to *re-write history* ``` git push -f name branch:master ``` **THIS IS A TERRIBLE IDEA IN A TEAM ENV**... but individually its okay.
+
+==
