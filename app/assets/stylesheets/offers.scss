@@ -14,3 +14,121 @@
   // background-size: cover;
   // background-repeat:no-repeat;
 }
+
+
+.offers{
+  text-align: left;
+  padding-top:70%;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 500px;
+  color:#1C1E23;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows:50px;
+  grid-gap: 1px;
+  grid-template-areas:
+  "title .......  logo"
+  "brand  rating  logo"
+  "name name price"
+  "num num location"
+  "email email date"
+  "cal cal info"
+  "message message alert"
+  ;
+  .item{
+    background: rgba(0,0,0,0.5);
+    width: 100%;height: 100%;
+  }
+  .offer-title{
+    text-align: center;
+    padding-top: 8px;
+    grid-area: title;
+  }
+  .offer-brand{
+    text-align: center;
+    grid-area: brand;
+  }
+  .offer-rating{
+    text-align: center;
+    grid-area: rating;
+  }
+  .offer-logo{
+    background-color: transparent;
+    grid-area: logo;
+    .offer-logo-img{
+      width: 100%;height: 100%;
+      max-width: 100px;
+      border-radius: 32px 32px 0 0;
+      object-fit:cover;
+    }
+  }
+  .offer-name{
+    grid-area: name;
+  }
+  .offer-price{
+    padding:8px;
+    text-align: center;
+    grid-area: price;
+  }
+  .offer-number{
+    grid-area: num;
+  }
+  .offer-location{
+    grid-area: location;
+  }
+  .offer-email{
+    grid-area: email;
+  }
+  .offer-date{
+    grid-area: date;
+  }
+  .offer-cal{
+    grid-area: cal;
+  }
+  .offer-info{
+    grid-area: info;
+  }
+  .offer-message{
+    grid-area: message;
+  }
+  .offer-alert{
+    grid-area: alert;
+  }
+
+
+  .offers{
+    display: flex;
+    grid-area: offers;
+    flex-direction:column;
+    // align-items: center;
+    justify-content:space-around;
+    text-align: center;
+  }
+  .show-headline{
+    grid-area: h_line;
+  }
+
+
+  .bio{
+    grid-area: bio;
+  }
+  .order-render{
+    background-color: red !important;
+    color: white;
+    grid-area: book;
+  }
+  .show-make-offer{
+    grid-area: make_offer;
+    display: flex;
+    text-align: center;
+    align-items:center;
+    justify-content:center;
+    border:1px solid white;
+    cursor: pointer;
+  //   button{
+  //     // color: white !important;
+  //   border:1px solid white;
+  //   border-radius: 6px;}
+  }
+}
