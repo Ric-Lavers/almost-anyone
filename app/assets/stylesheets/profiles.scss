@@ -81,3 +81,44 @@ $b-c:#1C1E23;
 .gigs{
   grid-area: gigs;
 }
+
+// Profile Forms
+.profile-title{
+  margin-top:12px !important;
+}
+.profile-field{
+  padding: 8px;
+  width:95%;
+  max-width:500px;
+  min-height: 38px;
+  background-color:#E9BA6F;
+  margin-bottom:17px !important;
+  border-radius: 24px;
+  textarea, input{
+    width:100%;
+    background-color:transparent;
+    border:none;
+    font-size: 1.2em;
+  }
+  select{
+    width:40%;
+  }
+}
+.profile-field:nth-of-type(even){
+  background-color:#F9F1AB;
+}
+#select-genres{
+  color:black;
+}
+.genres-input{
+  input{
+    width:84%;
+    float:left;
+  }
+  button{
+    border:1px solid #ccc !important;
+    border-radius: 8px;
+    padding:8px;
+    width: 15%
+  }
+}

@@ -49,6 +49,9 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+    puts "params[:profile]: #{params[:profile]}".red
+    puts "=".green*20
+    puts "params: #{params[:testing]}".red
 
     @profile.genres = [] unless params[:profile][:genres].count == 1
 

@@ -13,46 +13,46 @@
 
 
 
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand, id: :profile_brand %>
+  <div class="field profile-field">
+    <%#= form.label :brand %>
+    <%= form.text_field :brand, id: :profile_brand, placeholder: "Brand name" %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, id: :profile_location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone_number %>
-    <%= form.text_field :phone_number, id: :profile_phone_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image_data %>
+  <div class="field profile-field">
+    <%= form.label "Add profile image" %>
     <%= form.file_field :image, id: :profile_image_data %>
   </div>
 
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_area :bio, id: :profile_bio %>
+  <div class="field profile-field">
+    <%#= form.label :location %>
+    <%= form.text_field :location, id: :profile_location , placeholder: "Primary city" %>
   </div>
 
-  <div class="field">
-    <%= form.label :genres %>
+  <div class="field profile-field">
+    <%#= form.label :phone_number %>
+    <%= form.text_field :phone_number, id: :profile_phone_number, placeholder: "enter phone number"  %>
+  </div>
+
+  <div class="field profile-field">
+    <%#= form.label :bio %>
+    <%= form.text_area :bio, id: :profile_bio, placeholder: "Tell us about your brand"  %>
+  </div>
+
+  <div class="field profile-field">
+    <%= form.label "Select Genres", id: "select-genres" %>
     <%= form.collection_select(:genres, Genre.order(:name),:id,:name,{}, {multiple: true, include_blank: false}) %>
   </div>
 
-<!-- below is a way to get a searchable dropdown menu-->
-      <!-- <div class="field">
-        <input type=text list=browsers name="genre">
-          <datalist id=browsers >
-            <%#Genre.all.each do |g|%>
-             <option> <%#=g.name%>
-            <%#end%>
-          </datalist>
-      </div> -->
-
+  <div class="field profile-field genres-input">
+    <input placeholder="Add genres(max 8)" type=text list=genres name="profile[testing]" multiple>
+      <datalist id=genres >
+        <%#Genre.all.each do |g|%>
+         <option value="<%#=g.name%>" >
+        <%#end%>
+      </option>
+      </datalist>
+      <button type="button" name="button">Add</button>
+  </div>
 
   <div class="actions">
     <%= form.submit %>
