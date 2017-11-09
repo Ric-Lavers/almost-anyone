@@ -198,7 +198,6 @@ def create
     @tasks = Task.all
     respond_to :js
   end
-
 end
 ```
 

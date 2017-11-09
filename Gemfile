@@ -11,11 +11,11 @@ gem 'shrine'
 gem "aws-sdk-s3", "~> 1.2"
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
+  gem 'dotenv-rails'
 end
 group :development do
   gem 'guard-livereload', '~> 2.5', require: false
 end
-gem 'dotenv-rails', :groups => [:development, :test]
 gem 'colorize'
 gem 'jquery-ui-rails'
 gem 'stripe'
