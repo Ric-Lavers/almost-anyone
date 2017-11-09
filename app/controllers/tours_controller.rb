@@ -1,17 +1,34 @@
 class ToursController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
-
+  impressionist :actions=>[:show]
   # GET /tours
   # GET /tours.json
   def index
     @tours = Tour.all
     @cal = Calendar
+    puts "hello #{params}"
   end
 
   # GET /tours/1
   # GET /tours/1.json
   def show
+    @offers = Offer.where(tour_id: params[:id])
+    @offer = Offer.new
     @cal = Calendar
+    @booking  = Booking.new
+
+    @impressions = @tour.impressionist_count
+
+    def find_max(offers)
+      temp =[]
+       offers.each{|i|
+        temp << i.price
+      }
+      temp.sort.last
+    end
+    @max  = find_max(@offers)
+    @h_offer = @offers
   end
 
   # GET /tours/new

@@ -11,16 +11,22 @@ gem 'shrine'
 gem "aws-sdk-s3", "~> 1.2"
 group :development, :test do
   gem 'rspec-rails', '~> 3.6'
+  gem 'dotenv-rails'
 end
 group :development do
   gem 'guard-livereload', '~> 2.5', require: false
 end
 gem 'colorize'
 gem 'jquery-ui-rails'
-# gem 'stripe'
-# gem 'impressionist'
+gem 'stripe'
+gem 'ratyrate'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'impressionist'
+gem 'cloudinary'
+gem 'shrine-cloudinary'
 # gem 'scoped_search'
 # gem 'mailgun-ruby'
+# gem "discogs-wrapper"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -3,7 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 $b-c: #282C34;
 $headings: #E2C08D;
+
+.offer-form{
+  color:white;
+}
 .development{
+  margin-bottom: 24px;
   display: flex;
   align-items: stretch;
   a:visited{
@@ -16,13 +21,141 @@ $headings: #E2C08D;
 body{
   background-color: $b-c;
 }
-h1{
-  color:#E2C08D;
+.tour-form{
+  color:#FFFCF7;
 }
+
+// tour/show
+.show-tour{
+  margin-right: -24px;
+  margin-left: -24px;
+  color:white;
+  .show-image{
+    width: 100vw;
+    height: 50vh;
+    position: fixed;
+    z-index: -1;
+    .show-img{
+      width: 100%;height: 100%;
+      object-fit:cover;
+    }
+  }
+  .the-tour{
+    text-align: left;
+    padding-top:70%;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 500px;
+    color:$b-c;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows:36px 36px 36px auto 36px auto auto;
+    grid-gap: 1px;
+    grid-template-areas:
+    "...... .......  agent_logo"
+    "title  .......  agent_logo"
+    "h_line h_line brand"
+    "dates dates offers"
+    "price price make_offer"
+    "bio bio bio"
+    "book book book"
+    ;
+    .item{
+      background: rgba(0,0,0,0.5);
+      width: 100%;
+    }
+    .show-title{
+      text-align: center;
+      padding-top: 8px;
+      grid-area: title;
+    }
+    .agent-brand{
+      text-align: center;
+      grid-area: brand;
+    }
+    .show-agent-logo{
+      background-color: transparent;
+      grid-area: agent_logo;
+      .show-agent-logo-img{
+        width: 100%;height: 100%;
+        max-width: 100px;
+        border-radius: 32px 32px 0 0;
+        object-fit:cover;
+      }
+    }
+    .offers{
+      display: flex;
+      grid-area: offers;
+      flex-direction:column;
+      // align-items: center;
+      justify-content:space-around;
+      text-align: center;
+    }
+    .show-headline{
+      grid-area: h_line;
+    }
+    .cal{
+      grid-area: dates;
+    }
+    .show-price{
+      padding:8px;
+      text-align: left;
+      grid-area: price;
+    }
+    .bio{
+      grid-area: bio;
+    }
+    .order-render{
+      background-color: red !important;
+      color: white;
+      grid-area: book;
+    }
+    .show-make-offer{
+      grid-area: make_offer;
+      display: flex;
+      text-align: center;
+      align-items:center;
+      justify-content:center;
+      border:1px solid white;
+      cursor: pointer;
+    //   button{
+    //     // color: white !important;
+    //   border:1px solid white;
+    //   border-radius: 6px;}
+    }
+    .show-make-offer:hover{
+      border:1px solid white;
+    //   border-radius: 6px;
+  }
+}
+}
+.order-render{
+  p{color:#1C1E23 ;}
+  background-color: #FFFCF7 ;
+}
+.rics-little-div{
+  background-color: #FFFCF7;
+  .field{
+    color:#1C1E23;
+    select{
+      border: 1px solid #ccc;
+    }
+  }
+  input{border: 1px solid #ccc;}
+}
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content:space-around;
+}
+
 .tour-link{
   cursor: pointer;
+  text-decoration: none;
 }
 .tour{
+
+  max-width: 500px;
   color:$b-c;
   display: grid;
   width: 100%;
@@ -36,7 +169,8 @@ h1{
   "title title .... agent_logo agent_logo"
   "headline headline headline contact contact"
   "dates dates dates space space"
-  "price price price space space";
+  "price price price space space"
+  ;
 }
 .tour-info{
   background-color: #B0B7BA;
@@ -45,10 +179,15 @@ h1{
 
 }
 .title{
+  padding-top: 8px;
   grid-area: title;
+  // font-size: 0.8em;
+  text-align: center;
+  font-weight: 400;
+  // text-shadow: -2px 2px white;
   width: auto;
   margin-left: 0;
-  padding: 6px 26px;
+  padding: 6px 12px;
 }
 .agent-logo{
   grid-area: agent_logo;
@@ -63,7 +202,7 @@ h1{
   border-radius: 36px 36px 0 0 ;
   -webkit-mask-image:
   linear-gradient(0deg,
-                    rgba(0,0,0,0.2) 7%, rgba(0,0,0,1) 80%);
+  rgba(0,0,0,0.2) 7%, rgba(0,0,0,1) 80%);
 }
 
 .headline{
@@ -87,12 +226,26 @@ h1{
   grid-area: space;
 }
 
-
-
-
-table tr{
-  background-color: #FFFCF7;
+.show-img{
+  height: 150px;
+  -webkit-mask-image:
+  linear-gradient(0deg,
+  rgba(0,0,0,0.2) 7%, rgba(0,0,0,1) 80%);
 }
+
+
+// table tr{
+//   background-color: #FFFCF7;
+// }
+.item{
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+}
+.agent-logo{
+  background-color: transparent ;
+}
+
+// CALENDAR
 $dayWidth:26px;
 .cal-title{
   text-align: center;

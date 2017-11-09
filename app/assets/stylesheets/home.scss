@@ -1,3 +1,22 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.opening{
+  margin-top: 1em;margin-bottom: .6em;
+  color:#E9BA6F;
+  line-height: 1em;
+}
+.home-link{
+  text-align: center;
+  color: #272D34;
+  padding: 16px;
+  margin-bottom: 32px;margin-top: 32px;
+  width: 90%;
+  border: 0.5px solid #ccc;
+  border-radius:24px;
+  cursor: pointer;
+
+}
+a{text-decoration: none;}
+.booking{background-color: #FEF6AE;}
+.tours{background-color: #E9BA6F;}

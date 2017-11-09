@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-
+<div class="tour-form">
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :tour_title %>
@@ -33,11 +33,8 @@
     <%= form.label :bio %>
     <%= form.text_area :bio, id: :tour_bio %>
   </div>
-<script >
-$(function() {
-  $('.datepicker').datepicker();
-});
-</script>
+
+
 
 
   <div class="field">
@@ -68,4 +65,7 @@ $(function() {
   <div class="actions">
     <%= form.submit %>
   </div>
+
+
+</div>
 <% end %>

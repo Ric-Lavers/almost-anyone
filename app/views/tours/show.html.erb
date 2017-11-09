@@ -1,75 +1,108 @@
-<p id="notice"><%= notice %></p>
   <div class="show-tour">
-  <p>
-    <strong>User:</strong>
-    <%#= @tour.user.profile.brand %>
-  </p>
+    <div class="show-image">
+      <img class="show-img" src=" <%= @tour.image_url %>" alt="">
+    </div>
 
-  <p>
-    <strong>Title:</strong>
-    <%= @tour.title %>
-  </p>
+    <div class="the-tour">
 
-  <p>
-    <strong>Description:</strong>
-    <%= @tour.description %>
-  </p>
+      <div class="show-title item">
+        <%= @tour.title.capitalize %>
+      </div>
+      <div class="show-agent-logo item">
+        <%if @tour.user.profile.image_url != nil%>
+          <%= image_tag @tour.user.profile.image_url, class: "show-agent-logo-img item"%>
+        <%end%>
+      </div>
+      <div class="agent-brand item">
+      <h6>  <%= @tour.user.profile.brand %> </h6>
+      </div>
 
-  <p>
-    <strong>Country:</strong>
-    <%= @tour.country %>
-  </p>
 
-  <p>
-    <strong>Image</strong>
-    <img src=" <%= @tour.image_url %>" alt="">
-  </p>
-
-  <p>
-    <strong>Bio:</strong>
-    <%= @tour.bio %>
-  </p>
-
-  <!-- ===================calendar======================== -->
-        <div class="cal">
-          <div class="cal-title">
-            <%if @tour.start_date.strftime("%B")==@tour.end_date.strftime("%B")%>
-              <%= @tour.start_date.strftime("%B") %> <%= @tour.start_date.strftime("%Y") %>
-            <%else%>
-              <%= @tour.start_date.strftime("%B") %>  to   <%= @tour.end_date.strftime("%B") %> <%= @tour.end_date.strftime("%Y") %>
-            <%end%>
+        <%if @tour.user_id != current_user.id%>
+          <div class="offers item">
           </div>
-          <div class="heading">Sun</div><div class="heading">Mon</div><div class="heading">Tue</div><div class="heading">Wed</div><div class="heading">Thu</div><div class="heading">Fri</div><div class="heading">Sat</div>
+        <%elsif @tour.user_id == current_user.id%>
+          <%=link_to offers_path, class: "offers item" do%>
+            <div>
+              <p> <%=@offers.count%> <br> Offers</p>
+              <br>
+              <p>Highest offer <br> $<%= @max %></p>
+            </div>
+            <div >
+              <p>   <%=@impressions%> <br> views</p>
+            </div>
+          <%end%>
+        <%end%>
 
-
-          <%cal =  @cal.new(@tour.start_date, @tour.end_date)%>
-          <%cal.createCalendar%>
-          <% puts "#{cal.cal}".blue%>
-          <%cal.bookDays(
-          DateTime.new(2018, 3, 21),DateTime.new(2018, 3, 9),DateTime.new(2018, 3, 10))%>
-          <% puts "#{cal.cal}".green%>
-          <%=cal.displayCalendar.html_safe%>
-
+      <a class="show-make-offer item" href="#offer-form">
+        <div >
+          <%if @tour.user_id != current_user.id%>
+            <h5>Make a Offer</h5>
+          <%else%>
+            <h3>Book Dates</h3>
+          <%end%>
         </div>
-  <!-- ===================calendar======================== -->
+      </a>
+      <div class="show-headline item">
+        <%= @tour.description %><br>
+        <h6> <% @tour.genres.each_with_index do |genre, index| %>
+          <%if index == @tour.genres.count-1%>
+              <%= genre.name%>
+            <%elsif%>
+              <%= genre.name + ", "%>
+            <%end%>
+        <%end%></h6>
+      </div>
 
-  <p>
-    <strong>Min cost:</strong>
-    $ <%= @tour.min_cost %>
-  </p>
+      <div class="show-price item">
+        <h5>
+        $ <%= @tour.min_cost %> to $ <%= @tour.max_cost %></h5>
+      </div>
+      <div class="bio item">
+        <%= @tour.bio %>
+      </div>
 
-  <p>
-    <strong>Max cost:</strong>
-    $ <%= @tour.max_cost %>
+      <!-- ===================calendar======================== -->
+            <div class="cal item">
+              <div class="cal-title">
+                <%if @tour.start_date.strftime("%B")==@tour.end_date.strftime("%B")%>
+                  <%= @tour.start_date.strftime("%B") %> <%= @tour.start_date.strftime("%Y") %>
+                <%else%>
+                  <%= @tour.start_date.strftime("%B") %>  to   <%= @tour.end_date.strftime("%B") %> <%= @tour.end_date.strftime("%Y") %>
+                <%end%>
+              </div>
+              <div class="heading">Sun</div><div class="heading">Mon</div><div class="heading">Tue</div><div class="heading">Wed</div><div class="heading">Thu</div><div class="heading">Fri</div><div class="heading">Sat</div>
+              <%cal =  @cal.new(@tour.start_date, @tour.end_date)%>
+              <%cal.createCalendar%>
+              <%@list = []%>
+                <%temp = Booking.where(tour_id: @tour.id)%>
+                <%temp.each{|i|%>
+                  <%@list << i.date%>
+                  <%}%>
+              <%cal.bookDays(@list)%>
+              <%# puts "#{cal.cal}".green%>
+              <%=cal.displayCalendar.html_safe%>
+            </div>
+      <!-- ===================calendar======================== -->
 
-  </p>
+    </div>
 
-  <p>
-    <strong>genres:</strong>
-    <% @tour.genres.each do |genre| %>
-    <%= genre.name%>
-    <%end%>
-  </p>
-</div>
-<%= link_to 'Edit', edit_tour_path(@tour) %> |
+    <div class="order-render" id="offer-form">
+      <%if @tour.user_id != current_user.id%>
+      <p> Submit an offer </p>
+      <div class="offer-form">
+        <%= render 'offer_form', tour_id: @tour.id, offer: @offer %>
+      </div>
+      <%elsif @tour.user_id == current_user.id%>
+      <p>Book Date</p>
+      <%=render "booking",tour_id: @tour.id, offer: @offer %>
+
+
+    </div>
+  </div><!-- the-tour -->
+<div class="footer">
+  <%= link_to 'Edit Bookings', bookings_path %>
+  <%= link_to 'Edit Tour', edit_tour_path(@tour) %>
+      <%end%>
 <%= link_to 'Back', tours_path %>
+</div>

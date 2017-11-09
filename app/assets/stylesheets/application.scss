@@ -17,22 +17,118 @@
  /*
  *= require jquery-ui
  */
+ // h1{
+ //   color:#E2C08D;
+ // }
+ $sub-H:#E0DCD2;
+.actions{
+  color:white;
+}
+.person{
+  color:#1C1E23;
+}
 *{
   margin: 0 auto;
   box-sizing: border-box;
   font-family: 'futura-pt', 'futura', sans-serif;
+}
+.logo:active{
+  background-color: rgba(#1C1E23,0);
+  border:2px solid powderblue;
 }
  .navigation{
    border: 1px solid #ccc;
    background-color: #FFFCF6;
    width:100%;
    height: 65px;
-   display: flex;
+   display: grid;
+   grid-template-columns: 1fr 2fr 1fr;
+   position: fixed;
    justify-content:space-around;
    .logo{
-     height: 100%;
+     height: 60px;
+   }
+   .login-content{
+     width: 50px;
    }
  }
+
  .container{
-   margin: 0 24px;
+   padding: 65px 24px 8px;
  }
+
+ h4{
+  color: $sub-H;
+  font-weight: 300;
+ }
+
+ //Logout
+.dropdown{
+    margin:4px;
+    padding:4px;
+    width: 50px;
+    height:50px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    // background-color: #262626;
+    color: $sub-H;
+    border-radius:8px 8px 0 0 ;
+    text-align: center;
+    .menu{
+      font-weight: 400;
+    }
+}
+
+.login_out input{
+  background-color: white;
+  color: #262626;
+  border: 0;
+  width:60px;
+  height: 40px;
+  cursor: pointer;
+}
+input, textarea, select, button, a{
+  font-size: 11px ;
+}
+
+.drop{
+  width: 30px;
+  height: 20px;
+  position: absolute;
+  background-color: transparent;
+  margin:8px -8px;
+  color: #262626;
+    p{
+      font-size: .7em;
+      text-align: center;
+    }
+}
+.dropdown-content{
+  width: 80px;
+  margin:0px -8px;
+  border-radius:0 0 8px 8px;
+  padding:8px;
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: #262626;
+  cursor: pointer;
+}
+.dropdown-content:hover{
+  display: block;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    cursor: pointer;
+}
+.login_out:hover, .login_out input:hover{
+  background-color: rgba(0,0,0,0.9);
+  color:white;
+}
+.dropdown:hover{
+  cursor:default;
+}
+.hamburger{
+  width: 100%; height: 100%;
+}

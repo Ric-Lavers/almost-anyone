@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #dont apply this to the guest journey
-  before_action :authenticate_user!
+
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected

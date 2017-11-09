@@ -30,16 +30,21 @@ class Calendar
     @cal = cal
   end
 
-  def bookDays(*bookedDays)
+  def bookDays(bookedDays)
+    puts "#{bookedDays[0].class}".green
 
-    dates = @cal
-    dates.each{|d|
-      bookedDays.each{|b|
-        if d[1] == b
-           d[2] = false
-        end
+    # bookedDays= bookedDays[0] if 
+
+    if bookedDays
+      dates = @cal
+      dates.each{|d|
+        bookedDays.each{|b|
+          if d[1] == b
+             d[2] = false
+          end
+        }
       }
-    }
+    end
     @cal = dates
 
   end

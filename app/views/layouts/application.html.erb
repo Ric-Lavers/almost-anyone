@@ -4,37 +4,24 @@
     <title>AlmostAnyone</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+<body>
 
-  <nav class="navigation">
-    <div class="">
-      <h3>MENU</h3>
-      <%=link_to 'Password', edit_user_registration_path, class: "login_out"%>
-    </div>
-    <%=link_to root_path, class: "logo" do %>
-      <%=image_tag "almost-anyone.png", class: "logo"%>
-    <%end%>
-    <% if user_signed_in? %>
-        <%= button_to('Logout', destroy_user_session_path, method: :delete , form_class: "login_out") %>
+<%=render 'layouts/nav'%>
 
-    <% else %>
-        <div>
-        <%= button_to('Login', new_user_session_path, form_class: "login_out")  %>
-        </div>
-    <% end %>
-  </nav>
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>  
-  </div>
 
+    <%= yield %>
+
+  </div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
 
   </body>
