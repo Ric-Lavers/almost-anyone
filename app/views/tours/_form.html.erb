@@ -12,49 +12,50 @@
   <% end %>
 
 <div class="tour-form">
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :tour_title %>
+  <div class="field profile-field">
+    <%#= form.label :title %>
+    <%= form.text_field :title, id: :tour_title, placeholder: "Tour title" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :tour_description %>
+  <div class="field profile-field">
+    <%#= form.label :description %>
+    <%= form.text_field :description, id: :tour_description , placeholder: "Tour headline " %>
   </div>
 
 
 
-  <div class="field">
-    <%= form.label :image_data %>
+  <div class="field profile-field">
+    <%= form.label "Add Tour image" %>
     <%= form.file_field :image, id: :tour_image_data %>
   </div>
 
-  <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_area :bio, id: :tour_bio %>
+  <div class="field profile-field">
+    <%#= form.label :bio %>
+    <%= form.text_area :bio, id: :tour_bio, placeholder: "Biography and tour description" %>
   </div>
 
 
 
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.date_select :start_date, id: :tour_start_date %>
+  <div class="field profile-field">
+
+<div class="" style="border:0.5px solid #ccc;">
+
+<%= form.label :start_date %><br>
+<%= form.date_select :start_date, id: :tour_start_date %></div>
+<div class="" style="border:0.5px solid #ccc;">
+  <%= form.label :end_date %> <br>
+  <%= form.date_select :end_date, id: :tour_end_date%>
+</div>
+
   </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.date_select :end_date, id: :tour_end_date%>
-  </div>
-
-  <div class="field">
+  <div class="field profile-field">
     <%= form.label :min_cost %>
-    <%= form.number_field :min_cost, id: :tour_min_cost %>
-  </div>
-
-  <div class="field">
+    <%= form.number_field :min_cost, id: :tour_min_cost, placeholder: "Min cost" %>
+<br>
     <%= form.label :max_cost %>
-    <%= form.number_field :max_cost, id: :tour_max_cost %>
+    <%= form.number_field :max_cost, id: :tour_max_cost, placeholder: "Max cost" %>
   </div>
 
   <div class="field">

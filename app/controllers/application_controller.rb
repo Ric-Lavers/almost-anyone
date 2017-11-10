@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       }
       temp.sum.to_f/temp.count
     else
-      "unknown"
+      0
     end
 
   end

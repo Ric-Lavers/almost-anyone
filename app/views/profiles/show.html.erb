@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <div class="profile">
-  
+
+
   <div class="part pro-logo "><img class="profile-img right-fade" src="<%= @profile.image_url %>" alt=""></div>
   <div class="part brand "><%=@profile.brand%></div>
   <div class="part stars"><h1> <%= rating_for current_user, 'rating' %> </h1></div>

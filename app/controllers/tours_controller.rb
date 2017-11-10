@@ -5,7 +5,16 @@ class ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
+
     @tours = Tour.all
+    if params[:search]
+      @tours = Tour.search(params[:search]).order("created_at DESC")
+    else
+      @tours = Tour.all.order("created_at DESC")
+    end
+
+
+
     @cal = Calendar
     puts "hello #{params}"
   end

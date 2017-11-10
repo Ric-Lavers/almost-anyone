@@ -9,14 +9,17 @@
         <strong><%= @tour.title.capitalize %>
         </strong>
       </div>
-      <div class="show-agent-logo item">
-        <%if @tour.user.profile.image_url != nil%>
-          <%= image_tag @tour.user.profile.image_url, class: "show-agent-logo-img item"%>
-        <%end%>
-      </div>
-      <div class="agent-brand item right-fade">
-      <h6>  <%= @tour.user.profile.brand %> </h6>
-      </div>
+        <div class="show-agent-logo item">
+      <%=link_to profile_path(id: @tour.user.profile.id)do %>
+          <%if @tour.user.profile.image_url != nil%>
+            <%= image_tag @tour.user.profile.image_url, class: "show-agent-logo-img item"%>
+          <%end%>
+        </div>
+      <%end%>
+        <div class="agent-brand item right-fade">
+        <h6>  <%= @tour.user.profile.brand %> </h6>
+        </div>
+
 
         <%if @tour.user_id != current_user.id%>
           <div class="offers item right-fade">
@@ -26,7 +29,7 @@
             <div>
               <p> <%=@offers.count%> <br> Offers</p>
               <br>
-          
+
               <%if @max.class != String %>
               <p>Highest offer <br> $<%= @max %></p>
               <%end%>

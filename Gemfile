@@ -24,7 +24,7 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'impressionist'
 gem 'cloudinary'
 gem 'shrine-cloudinary'
-# gem 'scoped_search'
+gem 'scoped_search'
 # gem 'mailgun-ruby'
 # gem "discogs-wrapper"
 

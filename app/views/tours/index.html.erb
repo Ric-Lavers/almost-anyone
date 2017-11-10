@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Tours</h1>
+
+<%= form_tag(tours_path, :method => "get", id: "search_genre") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
+
 <%puts "#{@tours.inspect}".green%>
 <%if @tours.count < 1%>
   <%#@tours = @tours.sort_by{|tour|tour.start_date}%>

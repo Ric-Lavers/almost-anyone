@@ -14,7 +14,7 @@ class OffersController < ApplicationController
     @cal  = Calendar
     @max  = find_max_index(@offers).last
     @min  = find_max_index(@offers).first
-    @avg  = find_avg(@offers).to_i
+    @avg  = find_avg(@offers)
 
     @madeOffers = Offer.where(user_id: current_user.id)
 

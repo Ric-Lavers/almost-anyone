@@ -23,13 +23,14 @@
  $sub-H:#E0DCD2;
 $b-c: #282C34;
 
-.container{
+body{
    background-color: $b-c;
    background-color: #282828;
    background:linear-gradient(0deg,
    rgba(#282828, 1) 10%, rgba($b-c,1) 50%) !important;
-   background-attachment: fixed;
-   background-repeat: repeat-x;
+   min-height: 100vh;
+   // background-attachment: fixed;
+   // background-repeat: repeat-x;
    // background-image:url("background.png")
  }
 .actions{

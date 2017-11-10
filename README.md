@@ -2,11 +2,11 @@
 
 This rails app is a two sided marketplace that allows the users to act as both 'Tour Agent' and 'Promoter'.
 
-As a MVP the app will ...
+As a MVP the app will allow users to place offers for upcoming tours and place tours.
 
-Minor version updates will add features such as ...
+Minor version updates will add features such as messaging with file transfer, alerts on offers and emails on likely tours of interest
 
-Major version updates will ....
+Major version updates will add more categories such as comedy acts and conference speakers.
 ___
 ## Gems
 
@@ -32,8 +32,44 @@ ___
 
 [cloudinary](https://cloudinary.com//documentation/rails_integration)
 
-## Elements
+## Planning
 
+
+
+### User Journeys
+
+#### Promoter
+The Promoter is the event coordinator for the show in their city, They book and pay for all the performing artist and promote the show via their brand.
+* I to break into the market, so that I can put on big acts in my town/city
+* I want to see a range of upcoming tours, so that I can make the best bookings
+* Because I’m lazy, I want to have upcoming tours that match my genres
+* I want to make offers on tours and know what range to offer them
+
+#### Tour Agent
+The Tour Agent arranges a tour including flights and off day accomodation, across a period of time and country or region. They pay the artist and make money by selling the performing artist to promoters. Often they also present a show in their city via their brand.
+* I want a to offer the shows to more people, so that I can get the highest price possible
+* I want to see  statistics on the interest on each tour, so  that I can have data
+* I want to my profile to be able to show off my brand
+
+#### Performing artist supply chain
+![Performing artist supply chain](app/assets/images/readme/Almost-Anyone-planning-01.png)
+*Almost-anyone focuses on the B2B relationship between Tour agent and Promoter*
+
+
+
+Modifying a technique used to create service blue prints I created 3 user journeys, the Guest, the Promoter, and the Agent.
+The blue prints are designed focus on the user journey and define the actions, procedures & evidence surrounding the user as Visible actions => Html  CSS , Invisible actions => rails routes, datebases, models and controllers, System actions => gems, Heroku, API's Rauls itself and Physical evidence => page items such as buttons, form inputs, nav bars etc that the user can easily identify.  for service blue prints a cafe would have contain visible action => waiter takes order, invisible => chef cooks meal, system => eftpos & evidence => tables chairs, coffee machine, But the same principals apply for a website.
+
+##### Guest Journey
+![Guest Journey](app/assets/images/readme/Almost-Anyone-planning-05.png)
+##### Promoter Journey
+![Promoter Journey](app/assets/images/readme/Almost-Anyone-planning-04.png)
+##### Agent Journey
+![Agent Journey](app/assets/images/readme/Almost-Anyone-planning-03.png)
+
+
+#### Data Base design
+![db designer](app/assets/images/readme/db designer.png)
 
 ## Getting Started
 
@@ -162,6 +198,14 @@ Now the impressions can be counted by
 ```
 Easy a that and it worked first time.
 
+### Search
+
+Search was very easy to implement by following this guide [Create a Simple Search Form in Rails](http://www.rymcmahon.com/articles/2).
+However the guide only walks through a very simple search, and i'd like to have a few other search options.
+* Search a join table to find by genres
+* Let agents search for promoters via city (requires a new page)
+* search through offers and messages via dates and names. 
+
 ### Cloudinary
 
 Before posting on Heroku i need cloud storage for my tour and profile images. And it need to integrate with shrine. [shrine-cloudinary guide](https://github.com/janko-m/shrine-cloudinary)
@@ -171,7 +215,7 @@ gem 'shrine-cloudinary'
 ```
 Just change the shrine initializer and set up the .env file.
 
-### offers
+### Offers
 
 The offers have a fair amount of logic and styling in them
 
@@ -235,13 +279,24 @@ end
 
 However, validators are added to the Models preventing input dates outside of the Tour dates.
 
+### Security
 
+Unfortunately, i had a issue with my 'dotenv-rails' gem that helps to prevent the uploading of .env file where all my keys are stored. I installed the gem after my first commit and even though the gem was installed and .env was on my git .ignore it was still updated to github with every change, which may have lead to unauthorised usage of my keys. To prevent any further headaches i manually prevented the .env file being put on git hub using the codes below.  
+
+```
+git update-index --skip-worktree .env
+```
+```
+git update-index --no-skip-worktree .env
+```
+This may have been the reason why my AWS keys were used to reserve space on  SSD cloud storage in all AWS servers around the world, creating a $6500 bill in just 12 hours. . . And a week of correspondence to have the fees removed. And may explain weird sms's about my stripe test key being used at 4am in the morning.
 
 ## Running the tests
 
 Testing was a issue to due lack of time to learn Rspec.
 However when developing the Calendar model I tested constantly using a simple method of writing out the desired outcome and then check it against my actual outcome, if they were the same it passed true and i knew the my test had past.  
-Of the rSpec testing completed I ran into a number of problems for getting my tests past the validations that wrote.
+
+Of the rSpec testing completed I ran into a number of problems for getting my tests past the validations that wrote. ALthough I did get past a number of test  created by rSpec, and wrote some very simple tests myself.
 
 ### Break down into end to end tests
 
