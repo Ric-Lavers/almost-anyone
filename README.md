@@ -51,6 +51,12 @@ The Tour Agent arranges a tour including flights and off day accomodation, acros
 * I want to see  statistics on the interest on each tour, so  that I can have data
 * I want to my profile to be able to show off my brand
 
+#### Mood Board
+![Moodboard](app/assets/images/readme/Moodboard.png)
+*The mood board is inspired by some of the worlds leading digital music stores, ticket retailer, venues, and record labels*
+
+There was a commonality of colour themes with dark backgrounds and a minimal colour pallet
+
 #### Performing artist supply chain
 ![Performing artist supply chain](app/assets/images/readme/Almost-Anyone-planning-01.png)
 *Almost-anyone focuses on the B2B relationship between Tour agent and Promoter*
@@ -204,7 +210,7 @@ Search was very easy to implement by following this guide [Create a Simple Searc
 However the guide only walks through a very simple search, and i'd like to have a few other search options.
 * Search a join table to find by genres
 * Let agents search for promoters via city (requires a new page)
-* search through offers and messages via dates and names. 
+* search through offers and messages via dates and names.
 
 ### Cloudinary
 
@@ -296,22 +302,8 @@ This may have been the reason why my AWS keys were used to reserve space on  SSD
 Testing was a issue to due lack of time to learn Rspec.
 However when developing the Calendar model I tested constantly using a simple method of writing out the desired outcome and then check it against my actual outcome, if they were the same it passed true and i knew the my test had past.  
 
-Of the rSpec testing completed I ran into a number of problems for getting my tests past the validations that wrote. ALthough I did get past a number of test  created by rSpec, and wrote some very simple tests myself.
+Of the rSpec testing completed I ran into a number of problems for getting my tests past the validations that wrote. Although I did get past a number of test  created by rSpec, and wrote some very simple tests myself.
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-```
 
 ## Deployment
 
