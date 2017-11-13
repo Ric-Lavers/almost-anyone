@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-def seed_image(file_name)
-  File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}"))
-end
+# def seed_image(file_name)
+#   File.open(File.join(Rails.root, "/app/assets/images/seed/#{file_name}"))
+# end
 
 aeon = User.create! id: 1, email: "aeonknight@almost.anything.com", first_name: "Aeon", last_name: "Knight", :password => '123456', :password_confirmation => '123456'
 aeon.save!

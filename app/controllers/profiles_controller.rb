@@ -1,7 +1,14 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: :edit
 
+  def require_permission
+    if current_user != Profile.find(params[:id]).user
+      redirect_to root_path
+    end
+  end
+  
   # GET /profiles
   # GET /profiles.json
   def index

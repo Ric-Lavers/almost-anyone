@@ -2,6 +2,18 @@ class ToursController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_tour, only: [:show, :edit, :update, :destroy]
   impressionist :actions=>[:show]
+  before_action :require_permission, only: :edit
+
+  def require_permission
+    if current_user != Tour.find(params[:id]).user
+      redirect_to root_path
+    end
+  end
+
+
+
+
+
   # GET /tours
   # GET /tours.json
   def index
