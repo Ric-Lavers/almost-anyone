@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :bookings
   post '/rate' => 'rater#create', :as => 'rate'
-  resources :offers
+
+  resources :offers do
+    resources :messages
+  end
+  
   resources :charges, only: [:index, :new, :create]
   # resource :booking
   resources :tours do

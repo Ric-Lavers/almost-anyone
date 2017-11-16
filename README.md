@@ -153,6 +153,11 @@ rails db:migrate
 ```
 Now take the Offer form and make a partial copy in the views/tour then in tour/show.html.erb add a render to that partial. Change the form to have a hidden_field for the tour_id input and pass the tour_id into the partial and modify the date input (see bugs and fixes).
 
+### Messages
+```
+rails g scaffold Message tour:references offer:references message:text time:timestamp read:boolean
+```
+
 
 ### Make the rating model
 
@@ -204,7 +209,7 @@ Search was very easy to implement by following this guide [Create a Simple Searc
 However the guide only walks through a very simple search, and i'd like to have a few other search options.
 * Search a join table to find by genres
 * Let agents search for promoters via city (requires a new page)
-* search through offers and messages via dates and names. 
+* search through offers and messages via dates and names.
 
 ### Cloudinary
 
@@ -298,20 +303,9 @@ However when developing the Calendar model I tested constantly using a simple me
 
 Of the rSpec testing completed I ran into a number of problems for getting my tests past the validations that wrote. ALthough I did get past a number of test  created by rSpec, and wrote some very simple tests myself.
 
-### Break down into end to end tests
+## Seeding
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-```
+To ensure that there was some content on the site I seeded the profiles and tours with dummy activity. However i had some trouble seeding images using shrine. Unlike carrier wave the files needed to be put through a shine uploader first. To find the answer I used [Stack overflow]( https://stackoverflow.com/questions/47261207/how-do-you-seed-images-using-shrine)
 
 ## Deployment
 

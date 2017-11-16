@@ -17,9 +17,9 @@ class OffersController < ApplicationController
     @avg  = find_avg(@offers)
 
     @madeOffers = Offer.where(user_id: current_user.id)
-
-
-
+    puts "=" * 12
+    puts "#{params}".green
+    puts "="*12
 
 
     # @impressions = @tour.impressionist_count

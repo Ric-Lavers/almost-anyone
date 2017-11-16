@@ -3,10 +3,12 @@ require "shrine/storage/cloudinary"
 
 
 Cloudinary.config(
-  cloud_name: "aeonknight",
-  api_key:"915846594146587",
-  api_secret:"C8Akglw29TVX_cRTgnxwUYQRSrg",
+  cloud_name: ENV['CLOUD_NAME'],
+  api_key:ENV['API_KEY'],
+  api_secret:ENV['API_SECRET'],
 )
+
+
 
 Shrine.storages = {
   cache: Shrine::Storage::Cloudinary.new(prefix: "cache"), # for direct uploads

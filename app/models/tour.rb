@@ -3,6 +3,7 @@ class Tour < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :bookings
+  has_many :messages
   is_impressionable
   validate :start_date_cannot_be_in_the_past, :headline_length
 
@@ -20,7 +21,7 @@ class Tour < ApplicationRecord
  end
 
  def self.search(search)
-  where("title ILIKE ? OR description ILIKE ? OR bio ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%") 
+  where("title ILIKE ? OR description ILIKE ? OR bio ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
 end
 
 end
