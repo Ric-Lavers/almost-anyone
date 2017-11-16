@@ -3,7 +3,6 @@
 
 <h1>Your recieved these Offers </h1>
 <br>
-<%puts "#{@offers.count}".green%>
 <%if @offers.count != 0 %>
   <% @offers[0].each do |offer| %>
   <div class="offers">
@@ -43,7 +42,6 @@
     <!--start calendar  -->
   <div class="item offer-cal" style="display:block">
 
-
     <div class="cal">
       <%@tour = Tour.find_by_id(offer.tour_id)%>
       <%@tour.start_date%>
@@ -64,7 +62,6 @@
             <%}%>
         <%cal.bookDays(@list)%>
         <%cal.offerDay(offer.date)%>
-        <%# puts "#{cal.cal}".green%>
         <%=cal.displayCalendar.html_safe%>
     </div>
   </div>
@@ -96,7 +93,19 @@
       <%=((offer.tour.end_date.to_date - offer.tour.start_date.to_date).to_i)+1 - @list.count%></span></p>
     </div>
     <div class="item offer-message">
-  message
+<%puts "#{offer.messages[0].inspect}".red%>
+<% puts offer.messages.count %>
+ <%if offer.messages.count  > 1%>
+
+    <% offer.messages.each{|m| %>
+      <%m.user%><%= m.message%> <br>
+      <span style="font-size: 6px;"><%=time_ago_in_words(m.time)%></span> <br>
+    <%}%>
+  <% elsif offer.messages.count  == 1 %>
+      message<%= offer.messages.message%> <br>
+      <span style="font-size: 6px;"><%=offer.time_ago_in_words(offer.message.time)%></span> <br>
+<%end%>
+
     </div>
     <div class="item offer-alert right-fade">
   alert

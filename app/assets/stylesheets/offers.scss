@@ -114,6 +114,8 @@ img.raty-cancel {
   }
   .offer-message{
     padding-left: 8px;
+    display:flex;
+    flex-direction:column;
     grid-area: message;
   }
   .offer-alert{

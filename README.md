@@ -159,6 +159,11 @@ rails db:migrate
 ```
 Now take the Offer form and make a partial copy in the views/tour then in tour/show.html.erb add a render to that partial. Change the form to have a hidden_field for the tour_id input and pass the tour_id into the partial and modify the date input (see bugs and fixes).
 
+### Messages
+```
+rails g scaffold Message tour:references offer:references message:text time:timestamp read:boolean
+```
+
 
 ### Make the rating model
 

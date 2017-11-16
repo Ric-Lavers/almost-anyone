@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :tour
   belongs_to :user
+  has_many :messages
 
   validate :date_must_in_range, :price_must_in_above_min_cost,:date_must_not_be_booked
 
