@@ -224,11 +224,6 @@ Just change the shrine initializer and set up the .env file.
 
 The offers have a fair amount of logic and styling in them
 
-##### login
-
-##### styling
-
-
 ### forms
 
  [Using Ajax](https://launchschool.com/blog/the-detailed-guide-on-how-ajax-works-with-ruby-on-rails)
