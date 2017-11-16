@@ -75,7 +75,8 @@ The blue prints are designed focus on the user journey and define the actions, p
 
 
 #### Data Base design
-![db designer](app/assets/images/readme/db designer.png)
+
+![ERD](app/assets/images/readme/db designer.png)
 
 ## Getting Started
 
